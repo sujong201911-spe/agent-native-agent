@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -1110,6 +1110,63 @@ body.sys-mode .ws-combo { display: none; }
 .msheet .mrow .mrisk { margin-left: 8px; padding: 1px 7px; border-radius: 999px; font-size: 11px; font-weight: 800; color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, transparent); vertical-align: 1px; }
 .msheet .mrow.unavail .mt, .msheet .mrow.unavail .md { color: var(--text-weak); }
 .msheet .mnote { margin: 2px 6px 0; font-size: 12px; color: var(--text-weak); }
+/* ---- 무기·탄약 ---- */
+.arms-nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 0 16px; padding: 2px 2px 6px; }
+.arms-nav::-webkit-scrollbar { display: none; }
+.arms-nav button { flex: 0 0 auto; height: 36px; padding: 0 14px; border-radius: 999px; background: var(--surface); box-shadow: var(--sh-card); font-size: 13.5px; font-weight: 800; color: var(--text-sub); }
+.arms-nav button.on { background: var(--blue); color: var(--white); }
+.arms-nav .n { display: inline-block; min-width: 17px; height: 17px; margin-left: 6px; padding: 0 5px; border-radius: 999px; background: var(--danger); color: #fff; font-size: 10.5px; line-height: 17px; }
+.arms-view .wrap { max-width: 1100px; }
+.arms-view .sec-head { margin-top: 18px; }
+.arms-view .sec-head:first-child { margin-top: 4px; }
+.arms-seg { margin-bottom: 14px; flex-wrap: wrap; }
+.arms-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px 12px; padding: 14px; margin-bottom: 14px; align-items: end; }
+.arms-form .af-title { grid-column: 1 / -1; font-size: 14px; font-weight: 800; }
+.arms-form .af-title small { font-weight: 600; color: var(--text-weak); margin-left: 6px; }
+.arms-form .af { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.arms-form .af.wide { grid-column: 1 / -1; }
+.arms-form .af > span { font-size: 12px; font-weight: 800; color: var(--text-weak); }
+.arms-form input:not([type="checkbox"]), .arms-form select, .arms-form textarea, .arms-filter, .arms-tbl select {
+  width: 100%; min-height: 40px; border: 1.5px solid var(--line); border-radius: var(--r-xs); padding: 0 10px; font: inherit; font-size: 14px; color: var(--text); background: var(--surface-2); outline: none; }
+.arms-form textarea { padding: 8px 10px; resize: vertical; }
+.arms-form input:focus, .arms-form select:focus, .arms-form textarea:focus { border-color: var(--blue); background: var(--surface); }
+.arms-form .af.chk { flex-direction: row; align-items: center; gap: 8px; min-height: 40px; font-size: 13.5px; font-weight: 700; color: var(--text-sub); }
+.arms-form .af.checks > div { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; font-weight: 600; color: var(--text-sub); }
+.arms-form .af-acts { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; }
+.arms-form.loan { border-left: 4px solid var(--warm-fg); }
+.arms-filter, .arms-tbl select { width: auto; min-height: 32px; font-size: 13px; }
+.abtn { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: var(--r-xs); background: var(--surface-2); color: var(--text); font-size: 13px; font-weight: 800; border: 1px solid var(--line); text-decoration: none; white-space: nowrap; }
+.abtn.pri { background: var(--blue); color: var(--white); border-color: transparent; height: 38px; padding: 0 18px; }
+.abtn.del { color: var(--danger); }
+.abtn:disabled { opacity: .4; }
+.arow { display: inline-flex; gap: 6px; }
+.arms-tbl { padding: 2px 0; overflow-x: auto; margin-bottom: 8px; }
+.arms-tbl table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.arms-tbl th, .arms-tbl td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line-2); vertical-align: middle; white-space: nowrap; }
+.arms-tbl td:has(> .arow), .arms-tbl th:last-child { text-align: right; }
+.arms-tbl th { font-size: 11.5px; color: var(--text-weak); font-weight: 800; }
+.arms-tbl tr:last-child td { border-bottom: none; }
+.arms-empty { padding: 18px 0; }
+.wst { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 800; background: var(--surface-2); color: var(--text-sub); }
+.wst.stored { background: var(--success-bg); color: var(--success); }
+.wst.loaned { background: var(--blue-weak); color: var(--blue-700); }
+.wst.repair { background: var(--warm-bg); color: var(--warm-fg); }
+.wst.disposed { background: var(--surface-2); color: var(--text-weak); }
+.stat.risk .n { color: var(--danger); }
+.arms-alerts { padding: 4px 0; }
+.arms-alerts .al { display: flex; gap: 10px; padding: 9px 14px; font-size: 13.5px; border-bottom: 1px solid var(--line-2); }
+.arms-alerts .al:last-child { border-bottom: none; }
+.arms-alerts .al b { flex: 0 0 auto; font-size: 11.5px; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--text-sub); }
+.arms-alerts .al.risk b { background: var(--danger-bg); color: var(--danger); }
+.arms-alerts .al.warn b { background: var(--warm-bg); color: var(--warm-fg); }
+.arms-note { font-size: 12.5px; font-weight: 700; color: var(--warm-fg); margin: -4px 2px 10px; }
+.arms-note-card { padding: 14px; font-size: 13.5px; line-height: 1.6; color: var(--text-sub); margin-bottom: 8px; }
+.arms-note-card .abtn { margin-left: 8px; }
+.arms-train { margin-bottom: 8px; padding: 12px 14px; }
+.arms-train summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 14px; }
+.arms-train summary span { color: var(--text-weak); font-size: 13px; }
+.arms-train .arms-tbl { box-shadow: none; margin-top: 10px; }
+.arms-rep { margin-bottom: 4px; }
 </style>
 <script>
 /* 계절·시간대 테마 — <style> 직후에서 돌려 첫 페인트 전에 속성을 심는다(색 깜빡임 방지).
@@ -1159,365 +1216,378 @@ body.sys-mode .ws-combo { display: none; }
 
 <!-- ◀ 메인: 할일 / 일정 / 진화 -->
 <div id="main">
-  <nav class="topnav" aria-label="Main menu" role="tablist">
-    <div class="topnav-brand"><img src="/ana-logo.png" alt="ANA logo"><span class="bname">ANA</span></div>
+  <nav class="topnav" aria-label="주 메뉴" role="tablist">
+    <div class="topnav-brand"><img src="/ana-logo.png" alt="ANA 로고"><span class="bname">ANA</span></div>
     <!-- 영역 전환(PC) — 모바일에서는 하단 메뉴(.bottomnav)가 같은 일을 한다 -->
-    <div class="seg modeseg" role="tablist" aria-label="Area">
-      <button data-area="ws" class="on" role="tab">Workspace</button><button data-area="collab" role="tab">Collaborate<span class="tbadge" data-collabbadge>0</span></button><button data-area="sys" role="tab">System<span class="tbadge" data-sysbadge>0</span></button>
+    <div class="seg modeseg" role="tablist" aria-label="영역">
+      <button data-area="ws" class="on" role="tab">워크스페이스</button><button data-area="collab" role="tab">협업<span class="tbadge" data-collabbadge>0</span></button><button data-area="sys" role="tab">시스템<span class="tbadge" data-sysbadge>0</span></button>
     </div>
     <div class="ws-combo" id="wsCombo">
-      <button class="ws-btn" id="wsBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Workspace">
-        <span class="wsn" id="wsName">Base Workspace</span><span class="caret">▼</span></button>
+      <button class="ws-btn" id="wsBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="워크스페이스">
+        <span class="wsn" id="wsName">기본 워크스페이스</span><span class="caret">▼</span></button>
       <div class="ws-menu" id="wsMenu" hidden>
-        <div class="ws-label">Workspace</div>
-        <div class="ws-list" id="wsList" role="listbox" aria-label="Workspaces"></div>
-        <button class="ws-add" id="wsAddBtn">＋ Add workspace</button>
+        <div class="ws-label">워크스페이스</div>
+        <div class="ws-list" id="wsList" role="listbox" aria-label="워크스페이스 목록"></div>
+        <button class="ws-add" id="wsAddBtn">＋ 워크스페이스 추가</button>
         <form class="ws-new" id="wsNew" hidden>
-          <input id="wsNewName" maxlength="60" placeholder="Workspace name" autocomplete="off" aria-label="New workspace name">
-          <button type="submit">Add</button>
+          <input id="wsNewName" maxlength="60" placeholder="워크스페이스 이름" autocomplete="off" aria-label="새 워크스페이스 이름">
+          <button type="submit">추가</button>
         </form>
         <div class="ws-err" id="wsErr" hidden></div>
       </div>
     </div>
     <div class="tabstrip">
-      <button class="tab on" data-view="todo" data-group="ws" role="tab" aria-selected="true">Tasks</button>
-      <button class="tab" data-view="schedule" data-group="ws" role="tab" aria-selected="false">Calendar</button>
-      <button class="tab" data-view="memo" data-group="ws" role="tab" aria-selected="false">Notes</button>
-      <button class="tab" data-view="evolve" data-group="collab" role="tab" aria-selected="false">Evolve<span class="tbadge" id="evoBadge">0</span></button>
-      <button class="tab" data-view="approvals" data-group="collab" role="tab" aria-selected="false">Approvals<span class="tbadge" id="apprBadge">0</span></button>
-      <button class="tab" data-view="requests" data-group="collab" role="tab" aria-selected="false">Requests<span class="tbadge" id="reqBadge">0</span></button>
-      <button class="tab" data-view="stats" data-group="sys" role="tab" aria-selected="false">Stats</button>
-      <button class="tab" data-view="relations" data-group="sys" role="tab" aria-selected="false">Relations</button>
-      <button class="tab" data-view="reliability" data-group="sys" role="tab" aria-selected="false">Trustworthiness</button>
-      <button class="tab" data-view="safety" data-group="sys" role="tab" aria-selected="false">Safety</button>
-      <button class="tab" data-view="security" data-group="sys" role="tab" aria-selected="false">Security</button>
-      <button class="tab" data-view="update" data-group="sys" role="tab" aria-selected="false">Update<span class="tbadge" id="updBadge">0</span></button>
+      <button class="tab on" data-view="arms" data-group="ws" role="tab" aria-selected="true">무기·탄약<span class="tbadge" id="armsBadge">0</span></button>
+      <button class="tab" data-view="evolve" data-group="collab" role="tab" aria-selected="false">진화<span class="tbadge" id="evoBadge">0</span></button>
+      <button class="tab" data-view="approvals" data-group="collab" role="tab" aria-selected="false">승인<span class="tbadge" id="apprBadge">0</span></button>
+      <button class="tab" data-view="requests" data-group="collab" role="tab" aria-selected="false">요청<span class="tbadge" id="reqBadge">0</span></button>
+      <button class="tab" data-view="stats" data-group="sys" role="tab" aria-selected="false">통계</button>
+      <button class="tab" data-view="relations" data-group="sys" role="tab" aria-selected="false">관계</button>
+      <button class="tab" data-view="reliability" data-group="sys" role="tab" aria-selected="false">신뢰성</button>
+      <button class="tab" data-view="safety" data-group="sys" role="tab" aria-selected="false">안전</button>
+      <button class="tab" data-view="security" data-group="sys" role="tab" aria-selected="false">보안</button>
+      <button class="tab" data-view="update" data-group="sys" role="tab" aria-selected="false">업데이트<span class="tbadge" id="updBadge">0</span></button>
     </div>
-    <button id="modeToggle" class="mode-toggle" role="switch" aria-checked="false" aria-label="Chip mode">
-      <span class="knob"></span>Chip
+    <button id="modeToggle" class="mode-toggle" role="switch" aria-checked="false" aria-label="칩 모드">
+      <span class="knob"></span>칩
     </button>
-    <button id="drawBtn" class="chip-scan draw-btn" aria-label="Draw on the screen and attach it to the chat" title="Draw on the screen — circle what you mean">
+    <button id="drawBtn" class="chip-scan draw-btn" aria-label="화면에 그려서 채팅에 첨부" title="화면에 그리기 — 가리키고 싶은 곳에 동그라미를 치세요">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
     </button>
-    <button id="chipScanBtn" class="chip-scan" aria-label="Find and register elements that can't be picked as chips yet" title="Register unpickable elements as chips">
+    <button id="chipScanBtn" class="chip-scan" aria-label="아직 칩으로 고를 수 없는 요소를 찾아 등록" title="칩으로 고를 수 없는 요소를 칩 대상으로 등록">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
     </button>
-    <button id="meBtn" class="avatar-btn" aria-label="My profile" aria-haspopup="menu"><span class="av">?</span></button>
+    <button id="meBtn" class="avatar-btn" aria-label="내 프로필" aria-haspopup="menu"><span class="av">?</span></button>
   </nav>
   <div class="me-menu" id="meMenu" role="menu" hidden>
     <button id="menuEditInfo" role="menuitem">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      Edit My Info</button>
+      내 정보 수정</button>
     <button id="menuSettings" role="menuitem">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      Settings</button>
+      설정</button>
     <div class="mm-sep" role="separator"></div>
     <button id="menuLogout" role="menuitem">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-      <span>Log out<span class="mm-hint" id="menuLogoutHint" hidden></span></span></button>
+      <span>로그아웃<span class="mm-hint" id="menuLogoutHint" hidden></span></span></button>
   </div>
 
   <!-- 할일 -->
-  <section class="view on" id="todoView" role="tabpanel"><div class="wrap">
+  <section class="view" id="todoView" role="tabpanel"><div class="wrap">
     <div class="kpis">
-      <div class="kpi card total"><div class="n" id="kTotal">0</div><div class="l">Total</div></div>
-      <div class="kpi card open"><div class="n" id="kOpen">0</div><div class="l">Open</div></div>
-      <div class="kpi card done"><div class="n" id="kDone">0</div><div class="l">Done</div></div>
+      <div class="kpi card total"><div class="n" id="kTotal">0</div><div class="l">전체</div></div>
+      <div class="kpi card open"><div class="n" id="kOpen">0</div><div class="l">진행 중</div></div>
+      <div class="kpi card done"><div class="n" id="kDone">0</div><div class="l">완료</div></div>
     </div>
-    <div class="sec-head"><h2>Tasks</h2><span class="cnt" id="todoMeta"></span><span class="sp"></span>
-      <button class="add-btn" id="addTodoBtn">＋ Task</button></div>
+    <div class="sec-head"><h2>할일</h2><span class="cnt" id="todoMeta"></span><span class="sp"></span>
+      <button class="add-btn" id="addTodoBtn">＋ 할일</button></div>
     <div id="todoList"></div>
-    <div class="empty" id="todoEmpty">No tasks yet — add one with ＋ Task or via chat</div>
+    <div class="empty" id="todoEmpty">아직 할일이 없습니다 — ＋ 할일 버튼이나 채팅으로 추가하세요</div>
   </div></section>
 
   <!-- 일정 (달력) -->
   <section class="view" id="scheduleView" role="tabpanel"><div class="wrap">
-    <div class="sec-head"><span class="sp"></span><button class="add-btn" id="addEventBtn">＋ Event</button></div>
+    <div class="sec-head"><span class="sp"></span><button class="add-btn" id="addEventBtn">＋ 일정</button></div>
     <div class="sched-layout">
-      <aside class="up-panel card" aria-label="Upcoming">
-        <div class="phead">Upcoming</div>
+      <aside class="up-panel card" aria-label="다가오는 일정">
+        <div class="phead">다가오는 일정</div>
         <div id="upList"></div>
       </aside>
       <div class="cal-box">
         <div class="cal-head">
-          <button class="cal-nav" id="calPrev" aria-label="Previous month">‹</button>
+          <button class="cal-nav" id="calPrev" aria-label="이전 달">‹</button>
           <div class="mtitle" id="calTitle"></div>
-          <button class="cal-nav" id="calNext" aria-label="Next month">›</button>
+          <button class="cal-nav" id="calNext" aria-label="다음 달">›</button>
           <span class="sp"></span>
-          <button class="cal-today" id="calToday">Today</button>
+          <button class="cal-today" id="calToday">오늘</button>
         </div>
         <div class="cal-grid" id="calGrid"></div>
       </div>
-      <aside class="day-panel" aria-label="Selected day"><div class="dhead" id="dayHead"></div><div id="dayList"></div></aside>
+      <aside class="day-panel" aria-label="선택한 날"><div class="dhead" id="dayHead"></div><div id="dayList"></div></aside>
     </div>
   </div></section>
 
   <!-- 메모 (좌: 목록 / 우: 편집기) -->
   <section class="view" id="memoView" role="tabpanel"><div class="wrap">
     <div class="memo-layout">
-      <aside class="memo-side card" aria-label="Note list">
+      <aside class="memo-side card" aria-label="메모 목록">
         <div id="memoList"></div>
-        <div class="empty" id="memoEmpty" style="padding:24px 0">No notes yet — add one with the ＋ button below</div>
-        <button class="memo-add" id="addMemoBtn" aria-label="Add new note">＋ New note</button>
+        <div class="empty" id="memoEmpty" style="padding:24px 0">아직 메모가 없습니다 — 아래 ＋ 버튼으로 추가하세요</div>
+        <button class="memo-add" id="addMemoBtn" aria-label="새 메모 추가">＋ 새 메모</button>
       </aside>
       <div class="memo-main">
         <div class="memo-editor card" id="memoEditor" style="display:none">
-          <input id="mmTitle" placeholder="Title" aria-label="Note title" autocomplete="off">
-          <textarea id="mmBody" placeholder="Write something…" aria-label="Note body"></textarea>
-          <div class="memo-rels" id="mmRels" aria-label="Links"></div>
+          <input id="mmTitle" placeholder="제목" aria-label="메모 제목" autocomplete="off">
+          <textarea id="mmBody" placeholder="내용을 입력하세요…" aria-label="메모 내용"></textarea>
+          <div class="memo-rels" id="mmRels" aria-label="연결"></div>
           <div class="memo-ebar"><span class="mstate" id="mmState"></span><span class="sp"></span>
-            <button class="mact" id="mmToTask" title="Make a task from the selected text (or the note title)">→ Task</button>
-            <button class="mact" id="mmToEvent" title="Make an event from the selected text (or the note title)">→ Event</button>
-            <button class="mact" id="mmLink" title="Link this note to a task, event or another note">＋ Link</button>
-            <button class="mdel" id="mmDel">Delete</button></div>
+            <button class="mact" id="mmToTask" title="선택한 텍스트(없으면 메모 제목)로 할일 만들기">→ 할일</button>
+            <button class="mact" id="mmToEvent" title="선택한 텍스트(없으면 메모 제목)로 일정 만들기">→ 일정</button>
+            <button class="mact" id="mmLink" title="이 메모를 할일·일정·다른 메모와 연결">＋ 연결</button>
+            <button class="mdel" id="mmDel">삭제</button></div>
         </div>
-        <div class="memo-none" id="memoNone">Select a note, or add one with the ＋ button in the list</div>
+        <div class="memo-none" id="memoNone">메모를 고르거나 목록의 ＋ 버튼으로 추가하세요</div>
       </div>
     </div>
   </div></section>
 
   <section class="view" id="statsView" role="tabpanel"><div class="wrap">
-    <div class="sec-head"><h2>Stats</h2><span class="sp"></span>
-      <div class="seg" id="statSeg"><button class="on" data-seg="mine">My stats</button><button data-seg="all">All</button></div></div>
+    <div class="sec-head"><h2>통계</h2><span class="sp"></span>
+      <div class="seg" id="statSeg"><button class="on" data-seg="mine">내 통계</button><button data-seg="all">전체</button></div></div>
     <div id="statBody"></div>
-    <div class="sec-head" style="margin-top:22px"><h2>Activity</h2></div>
+    <div class="sec-head" style="margin-top:22px"><h2>활동</h2></div>
     <div id="actList"></div>
   </div></section>
 
   <!-- 관계: 메모·할일·일정이 어떻게 이어져 있는지(NodeRel) — 흐름 그림 · 끊긴 곳 · 관계 어휘 -->
   <section class="view" id="relationsView" role="tabpanel"><div class="wrap">
-    <div class="sec-head"><h2>Relations</h2><span class="cnt" id="relWs"></span><span class="sp"></span><span class="cnt">NodeRel</span></div>
+    <div class="sec-head"><h2>관계</h2><span class="cnt" id="relWs"></span><span class="sp"></span><span class="cnt">NodeRel</span></div>
     <div class="rel-graph card" id="relGraph"></div>
-    <div class="sec-head" style="margin-top:22px"><h2>Where the flow breaks</h2></div>
+    <div class="sec-head" style="margin-top:22px"><h2>흐름이 끊긴 곳</h2></div>
     <div id="relStats"></div>
-    <div class="sec-head" style="margin-top:22px"><h2>Vocabulary</h2></div>
+    <div class="sec-head" style="margin-top:22px"><h2>관계 어휘</h2></div>
     <div class="card rel-vocab" id="relVocab"></div>
   </div></section>
 
   <!-- 요청: 에이전트 → 사용자 (시스템을 더 잘 운용하기 위해 필요한 것) -->
   <section class="view" id="requestsView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">Work the agent is asking you to do — things only you can do, and information it is missing</span></div>
-    <div class="evo-cta"><button id="reqAsk">Ask the agent what it needs</button></div>
-    <div class="stseg" data-stseg="req" role="tablist" aria-label="Request status"></div>
+    <div class="evo-head"><span class="evo-lead">에이전트가 부탁하는 일 — 나만 할 수 있는 일, 그리고 에이전트에게 없는 정보</span></div>
+    <div class="evo-cta"><button id="reqAsk">에이전트에게 필요한 것 묻기</button></div>
+    <div class="stseg" data-stseg="req" role="tablist" aria-label="요청 상태"></div>
     <div id="reqList"></div>
     <div class="empty" id="reqEmpty"></div>
   </div></section>
 
   <!-- 협업 › 승인: 에이전트가 일을 하려면 사용자 승인이 필요한 것(데이터 변경 제안 · 결정 · 접근 · 승인 요청) -->
   <section class="view" id="approvalsView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">What the agent needs your OK for before it goes on — data changes, decisions, access</span></div>
-    <div class="evo-cta"><button id="apprAsk">Ask the agent what needs my approval</button></div>
-    <div class="stseg" data-stseg="appr" role="tablist" aria-label="Approval status"></div>
-    <div class="sec-head" id="apprDiffHead" hidden><h2>Data changes</h2><span class="cnt" id="apprDiffCnt"></span></div>
+    <div class="evo-head"><span class="evo-lead">에이전트가 일을 진행하기 전에 내 승인이 필요한 것 — 데이터 변경, 결정, 접근 권한</span></div>
+    <div class="evo-cta"><button id="apprAsk">승인이 필요한 것 에이전트에게 묻기</button></div>
+    <div class="stseg" data-stseg="appr" role="tablist" aria-label="승인 상태"></div>
+    <div class="sec-head" id="apprDiffHead" hidden><h2>데이터 변경</h2><span class="cnt" id="apprDiffCnt"></span></div>
     <div id="apprDiffs"></div>
-    <div class="sec-head" id="apprReqHead" hidden><h2>Requests</h2><span class="cnt" id="apprReqCnt"></span></div>
+    <div class="sec-head" id="apprReqHead" hidden><h2>요청</h2><span class="cnt" id="apprReqCnt"></span></div>
     <div id="apprList"></div>
     <div class="empty" id="apprEmpty"></div>
   </div></section>
 
   <!-- 시스템 › 신뢰성 · 안전 · 보안 — 서버가 실제 상태로 계산한 점검(/api/trust) -->
   <section class="view trust-view" id="reliabilityView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">Can you trust the agent right now — is it running, reading its own log, succeeding at its tools, within its plan limits</span></div>
+    <div class="evo-head"><span class="evo-lead">지금 에이전트를 믿을 수 있는가 — 실행 중인지, 자체 기록을 읽는지, 도구 호출이 성공하는지, 요금제 한도 안인지</span></div>
     <div class="trust-sum" data-trust-sum="reliability"></div><div class="trust-list" data-trust="reliability"></div>
   </div></section>
   <section class="view trust-view" id="safetyView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">What stops the agent from doing damage — permission mode, risky commands it ran, approval gates</span></div>
+    <div class="evo-head"><span class="evo-lead">에이전트가 피해를 내지 못하게 막는 것 — 권한 모드, 실행한 위험 명령, 승인 절차</span></div>
     <div class="trust-sum" data-trust-sum="safety"></div><div class="trust-list" data-trust="safety"></div>
   </div></section>
   <section class="view trust-view" id="securityView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">Who can reach this ANA and what it keeps — network exposure, sign-in, credentials, secrets in your data</span></div>
+    <div class="evo-head"><span class="evo-lead">누가 이 ANA에 접근할 수 있고 무엇을 보관하는가 — 네트워크 노출, 로그인, 자격 증명, 데이터 속 비밀값</span></div>
     <div class="trust-sum" data-trust-sum="security"></div><div class="trust-list" data-trust="security"></div>
   </div></section>
 
   <!-- 시스템 › 업데이트: GitHub의 agent-native-agent와 기능 단위로 비교 → 이 ANA에 들일 만한 것을 목록으로 -->
   <section class="view" id="updateView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">What's new in agent-native-agent that this ANA doesn't have yet. Update hands it to the agent to port into this ANA; Cancel hides it from later checks</span></div>
-    <div class="evo-cta"><button id="updCheck">Check for updates</button></div>
+    <div class="evo-head"><span class="evo-lead">agent-native-agent에 새로 생겼지만 이 ANA에는 아직 없는 것. 업데이트를 누르면 에이전트가 이 ANA로 옮겨 오고, 취소하면 이후 확인에서 숨깁니다</span></div>
+    <div class="evo-cta"><button id="updCheck">업데이트 확인</button></div>
     <div class="upd-last" id="updLast"></div>
-    <div class="stseg" data-stseg="upd" role="tablist" aria-label="Update status"></div>
+    <div class="stseg" data-stseg="upd" role="tablist" aria-label="업데이트 상태"></div>
     <div id="updList"></div>
     <div class="empty" id="updEmpty"></div>
   </div></section>
 
   <!-- 진화 -->
   <section class="view" id="evolveView" role="tabpanel"><div class="wrap">
-    <div class="evo-head"><span class="evo-lead">How the agent thinks this app should evolve — from its features, your data and how you use it. Approve one and the agent builds it</span></div>
-    <div class="evo-cta"><button id="evoAnalyze">Ask the agent to analyze</button></div>
-    <div class="stseg" data-stseg="evo" role="tablist" aria-label="Proposal status"></div>
+    <div class="evo-head"><span class="evo-lead">기능, 데이터, 사용 방식을 보고 에이전트가 생각하는 앱의 진화 방향. 하나를 승인하면 에이전트가 만듭니다</span></div>
+    <div class="evo-cta"><button id="evoAnalyze">에이전트에게 분석 요청</button></div>
+    <div class="stseg" data-stseg="evo" role="tablist" aria-label="제안 상태"></div>
     <div id="evoList"></div>
     <div class="empty" id="evoEmpty"></div>
+  </div></section>
+
+  <!-- 무기·탄약(정보화장비계) — arms-api.js. 하나의 탭 안에서 세부 카테고리를 고른다. 화면은 아래 '무기·탄약' 스크립트가 그린다 -->
+  <section class="view on arms-view" id="armsView" role="tabpanel"><div class="wrap">
+    <nav class="arms-nav" id="armsNav" role="tablist" aria-label="무기·탄약 세부 카테고리"></nav>
+    <div class="arms-pane" id="armsStatus" role="tabpanel"></div>
+    <div class="arms-pane" id="armsLoan" role="tabpanel" hidden></div>
+    <div class="arms-pane" id="armsAmmo" role="tabpanel" hidden></div>
+    <div class="arms-pane" id="armsInspect" role="tabpanel" hidden></div>
+    <div class="arms-pane" id="armsTraining" role="tabpanel" hidden></div>
+    <div class="arms-pane" id="armsAdmin" role="tabpanel" hidden></div>
+    <!-- 등록 칸의 입력 제안(무기 종류·탄약 종류·무기고 구분) -->
+    <datalist id="dlWType"><option value="권총"><option value="소총"><option value="기관단총"><option value="산탄총"><option value="가스발사총"></datalist>
+    <datalist id="dlAType"><option value="권총탄"><option value="소총탄"><option value="공포탄"><option value="고무탄"><option value="산탄"></datalist>
+    <datalist id="dlArmKind"><option value="집중무기고"><option value="간이무기고"></datalist>
   </div></section>
 </div>
 
 <!-- ▶ 채팅 사이드바 -->
-<aside id="chatSide" aria-label="Agent chat">
+<aside id="chatSide" aria-label="에이전트 채팅">
   <div id="chatResize" aria-hidden="true"></div>
   <div class="ana-status">
     <div class="as-top">
-      <button class="icon-btn round" id="chatCloseBtn" aria-label="Close chat">
+      <button class="icon-btn round" id="chatCloseBtn" aria-label="채팅 닫기">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
-      <div class="conn bad" id="connPill" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-label="Agent session — choose which agent to talk to">
-        <span class="cbtn"><span class="dot"></span><span class="label" id="connLabel">Connecting…</span><span class="caret">▼</span></span>
+      <div class="conn bad" id="connPill" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-label="에이전트 세션 — 대화할 에이전트 선택">
+        <span class="cbtn"><span class="dot"></span><span class="label" id="connLabel">연결 중…</span><span class="caret">▼</span></span>
         <div class="conn-pop" id="tmuxCfg" hidden>
-          <div class="ws-label">Agent session</div>
-          <div class="tmux-cfg-list" id="tmuxCfgList" role="listbox" aria-label="Agent sessions">Loading…</div>
-          <div class="tmux-cfg-hint">Each session keeps its own chat history. Start an agent in tmux to see it here.</div>
+          <div class="ws-label">에이전트 세션</div>
+          <div class="tmux-cfg-list" id="tmuxCfgList" role="listbox" aria-label="에이전트 세션 목록">불러오는 중…</div>
+          <div class="tmux-cfg-hint">세션마다 대화 기록이 따로 남습니다. tmux에서 에이전트를 시작하면 여기에 보입니다.</div>
         </div>
       </div>
     </div>
   </div>
   <div id="feed" aria-live="polite" aria-relevant="additions">
-    <div class="feed-empty" id="feedEmpty">No agent connected — tap the session name above to choose one</div>
+    <div class="feed-empty" id="feedEmpty">연결된 에이전트가 없습니다 — 위의 세션 이름을 눌러 선택하세요</div>
     <div id="msgs" style="display:contents"></div>
     <div id="pendingWrap" style="display:contents"></div>
     <div id="optimistic" style="display:contents"></div>
   </div>
   <!-- 떠 있는 입력 영역 — 대화가 이 뒤로 비쳐 흐른다. ↓는 맨 아래(최신)로 바로 간다 -->
   <div class="chat-dock" id="chatDock">
-  <button class="jumpdown" id="jumpBtn" aria-label="Jump to the latest message" title="Jump to the latest" hidden>
+  <button class="jumpdown" id="jumpBtn" aria-label="최신 메시지로 이동" title="최신 메시지로 이동" hidden>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="6 13 12 19 18 13"/></svg>
   </button>
   <div class="feedstatus">
-    <div class="typing" id="typing"><span class="tspark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"/></svg></span><span id="typEl">0s</span><span aria-hidden="true">·</span><span id="typTx">Working…</span></div>
-    <span class="resync" id="resync" title="Re-reading the agent's screen to line up the chat history"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>Syncing…</span>
+    <div class="typing" id="typing"><span class="tspark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"/></svg></span><span id="typEl">0s</span><span aria-hidden="true">·</span><span id="typTx">작업 중…</span></div>
+    <span class="resync" id="resync" title="대화 기록을 맞추려고 에이전트 화면을 다시 읽는 중"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>동기화 중…</span>
   </div>
-  <div class="errbar" id="errbar" role="alert"><span id="errtext"></span><button id="errclose" aria-label="Close">✕</button></div>
+  <div class="errbar" id="errbar" role="alert"><span id="errtext"></span><button id="errclose" aria-label="닫기">✕</button></div>
   <div class="dlgcard" id="dlgcard" role="alert">
-    <div class="dlgcard-h" id="dlgcardH">The terminal is showing a dialog that needs your input</div>
+    <div class="dlgcard-h" id="dlgcardH">터미널에 입력이 필요한 대화 상자가 떠 있습니다</div>
     <div class="dq" id="dlgQ" hidden></div>
-    <details class="dq-raw" id="dlgRaw" open><summary>Terminal view &amp; keys</summary>
+    <details class="dq-raw" id="dlgRaw" open><summary>터미널 화면 &amp; 키</summary>
     <pre class="dlgcard-body" id="dlgcardBody"></pre>
     <div class="dlgcard-keys">
       <button data-key="up" aria-label="Up">↑</button>
-      <button data-key="down" aria-label="Down">↓</button>
-      <button data-key="1" aria-label="Option 1">1</button>
-      <button data-key="2" aria-label="Option 2">2</button>
-      <button data-key="esc">Esc Cancel</button>
-      <button data-key="enter" class="primary">⏎ Select</button>
+      <button data-key="down" aria-label="아래">↓</button>
+      <button data-key="1" aria-label="선택지 1">1</button>
+      <button data-key="2" aria-label="선택지 2">2</button>
+      <button data-key="esc">Esc 취소</button>
+      <button data-key="enter" class="primary">⏎ 선택</button>
     </div>
     </details>
   </div>
   <div class="keys" id="keysRow">
-    <button data-key="ctrl-c" class="danger" id="ctrlc" title="Stop the current task">Stop</button>
+    <button data-key="ctrl-c" class="danger" id="ctrlc" title="현재 작업 중지">중지</button>
   </div>
   <div class="composer">
-    <div class="chips" id="chips" aria-label="Context chips"></div>
+    <div class="chips" id="chips" aria-label="컨텍스트 칩"></div>
     <input type="file" id="fileInput" multiple hidden>
     <div class="inputwrap" id="inputwrap">
-      <textarea id="input" rows="1" placeholder="Message ANA — Enter to send" aria-label="Message input"></textarea>
+      <textarea id="input" rows="1" placeholder="ANA에게 메시지 — Enter로 전송" aria-label="메시지 입력"></textarea>
       <div id="ghost"></div>
     </div>
     <div class="cbar">
-      <button id="attachBtn" class="attach" title="Attach files" aria-label="Attach files">
+      <button id="attachBtn" class="attach" title="파일 첨부" aria-label="파일 첨부">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
-      <button class="agent-pill" id="agentPill" title="Choose the agent session">Agent</button>
+      <button class="agent-pill" id="agentPill" title="에이전트 세션 선택">에이전트</button>
       <!-- 권한 모드: 방패 ✓ = 묻고 진행, 빨간 방패 ! = 묻지 않고 실행(Bypass · Full Access). 누르면 권한 목록 시트 -->
-      <button class="perm-btn" id="permBtn" hidden aria-label="Permission mode"><svg class="si-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><svg class="si-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></button>
+      <button class="perm-btn" id="permBtn" hidden aria-label="권한 모드"><svg class="si-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><svg class="si-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></button>
       <!-- 요금제 한도: 5시간 · 주간 — 원형 차트가 쓴 만큼 찬다 -->
-      <button class="limit-ring" id="ring5h" data-limit="fiveHour" hidden aria-label="5-hour limit"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="trk" cx="18" cy="18" r="14"/><circle class="val" cx="18" cy="18" r="14" pathLength="100"/></svg><span class="rl">5h</span></button>
-      <button class="limit-ring" id="ringWeek" data-limit="week" hidden aria-label="Weekly limit"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="trk" cx="18" cy="18" r="14"/><circle class="val" cx="18" cy="18" r="14" pathLength="100"/></svg><span class="rl">7d</span></button>
+      <button class="limit-ring" id="ring5h" data-limit="fiveHour" hidden aria-label="5시간 한도"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="trk" cx="18" cy="18" r="14"/><circle class="val" cx="18" cy="18" r="14" pathLength="100"/></svg><span class="rl">5h</span></button>
+      <button class="limit-ring" id="ringWeek" data-limit="week" hidden aria-label="주간 한도"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="trk" cx="18" cy="18" r="14"/><circle class="val" cx="18" cy="18" r="14" pathLength="100"/></svg><span class="rl">7d</span></button>
       <span class="sp"></span>
-      <button class="mic" id="micBtn" hidden title="Dictate" aria-label="Dictate" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21"/></svg></button>
-      <button id="send" title="Send" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg></button>
+      <button class="mic" id="micBtn" hidden title="받아쓰기" aria-label="받아쓰기" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21"/></svg></button>
+      <button id="send" title="보내기" aria-label="보내기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg></button>
     </div>
   </div>
   </div>
 </aside>
 
-<div class="draw-layer" id="drawLayer" hidden aria-label="Drawing layer">
+<div class="draw-layer" id="drawLayer" hidden aria-label="그리기 레이어">
   <canvas id="drawCanvas"></canvas>
-  <div class="draw-bar" role="toolbar" aria-label="Drawing tools">
-    <span class="dhint">Circle what you mean</span>
-    <button class="dsw on" data-color="#FF0000" data-name="red" aria-label="Red" style="background:#FF0000"></button>
-    <button class="dsw" data-color="#FF00FF" data-name="magenta" aria-label="Magenta" style="background:#FF00FF"></button>
-    <button class="dsw" data-color="#0000FF" data-name="blue" aria-label="Blue" style="background:#0000FF"></button>
-    <button id="drawUndo" disabled>Undo</button>
-    <button id="drawCancel">Cancel</button>
-    <button id="drawDone" class="dok" disabled>Add to chat</button>
+  <div class="draw-bar" role="toolbar" aria-label="그리기 도구">
+    <span class="dhint">가리키고 싶은 곳에 동그라미를 치세요</span>
+    <button class="dsw on" data-color="#FF0000" data-name="red" aria-label="빨강" style="background:#FF0000"></button>
+    <button class="dsw" data-color="#FF00FF" data-name="magenta" aria-label="마젠타" style="background:#FF00FF"></button>
+    <button class="dsw" data-color="#0000FF" data-name="blue" aria-label="파랑" style="background:#0000FF"></button>
+    <button id="drawUndo" disabled>되돌리기</button>
+    <button id="drawCancel">취소</button>
+    <button id="drawDone" class="dok" disabled>채팅에 추가</button>
   </div>
 </div>
 <!-- 하단 메뉴(모바일): Workspace = 할일·일정·메모 / System = 통계·요청·진화·관계 -->
-<nav class="bottomnav" aria-label="Area">
-  <button data-area="ws" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Workspace</button>
-  <button data-area="collab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Collaborate<span class="tbadge" data-collabbadge>0</span></button>
-  <button data-area="sys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>System<span class="tbadge" data-sysbadge>0</span></button>
+<nav class="bottomnav" aria-label="영역">
+  <button data-area="ws" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>워크스페이스</button>
+  <button data-area="collab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>협업<span class="tbadge" data-collabbadge>0</span></button>
+  <button data-area="sys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>시스템<span class="tbadge" data-sysbadge>0</span></button>
 </nav>
 <!-- 모델 선택 시트(Claude Code 세션) — Claude 앱과 같은 모양 -->
 <div class="limit-pop" id="limitPop" role="status" hidden></div>
 <div class="msheet-scrim" id="msheetScrim"></div>
 <div class="msheet" id="msheet" role="dialog" aria-modal="true" aria-labelledby="msheetTitle" hidden>
   <div class="grab" aria-hidden="true"></div>
-  <div class="mhead"><button class="icon-btn round" id="msheetClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><h2 id="msheetTitle">Model</h2><span></span></div>
-  <div class="mgroup" id="mList" role="radiogroup" aria-label="Model"></div>
-  <button class="mgroup mrow meffort" id="mEffortBtn" aria-expanded="false"><span class="mt">Effort</span><span class="mv" id="mEffortVal"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-  <div class="mgroup" id="mEffortList" role="radiogroup" aria-label="Effort" hidden></div>
+  <div class="mhead"><button class="icon-btn round" id="msheetClose" aria-label="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><h2 id="msheetTitle">모델</h2><span></span></div>
+  <div class="mgroup" id="mList" role="radiogroup" aria-label="모델"></div>
+  <button class="mgroup mrow meffort" id="mEffortBtn" aria-expanded="false"><span class="mt">노력 수준</span><span class="mv" id="mEffortVal"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="mgroup" id="mEffortList" role="radiogroup" aria-label="노력 수준" hidden></div>
   <!-- 권한 모드: Claude는 Shift+Tab 순환, Codex는 /permissions 메뉴로 바꾼다(permission-mode.js) -->
-  <button class="mgroup mrow meffort" id="mPermBtn" aria-expanded="false"><span class="mt">Permissions</span><span class="mv" id="mPermVal"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-  <div class="mgroup" id="mPermList" role="radiogroup" aria-label="Permissions" hidden></div>
-  <p class="mnote" id="mNote">Also becomes the default for new Claude Code sessions.</p>
+  <button class="mgroup mrow meffort" id="mPermBtn" aria-expanded="false"><span class="mt">권한</span><span class="mv" id="mPermVal"></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  <div class="mgroup" id="mPermList" role="radiogroup" aria-label="권한" hidden></div>
+  <p class="mnote" id="mNote">새 Claude Code 세션의 기본값으로도 저장됩니다.</p>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<button class="newver" id="newver">New version available — tap to reload</button>
+<button class="newver" id="newver">새 버전이 있습니다 — 눌러서 새로고침</button>
 <div class="chat-scrim" id="chatScrim"></div>
-<button class="fab" id="fab" aria-label="Open chat"><span class="badge" id="fabBadge">0</span>
+<button class="fab" id="fab" aria-label="채팅 열기"><span class="badge" id="fabBadge">0</span>
   <!-- 말풍선 안에 콘솔 프롬프트(>_) — 채팅 너머가 터미널 에이전트임을 보여 준다 -->
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-7l-5 3.5V18H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z"/><polyline points="7 8 10 10.5 7 13"/><line x1="12.5" y1="13" x2="16.5" y2="13"/></svg>
 </button>
 
-<div class="modal" id="meModal" role="dialog" aria-modal="true" aria-label="Edit My Info">
-  <h3>Edit My Info</h3>
+<div class="modal" id="meModal" role="dialog" aria-modal="true" aria-label="내 정보 수정">
+  <h3>내 정보 수정</h3>
   <div class="me-row">
-    <button class="me-pic" id="mePic" aria-label="Change profile photo"><span class="av lg">?</span></button>
-    <div class="me-id"><div class="me-mail" id="meMail"></div><div class="me-hint">Tap the photo to change it</div></div>
+    <button class="me-pic" id="mePic" aria-label="프로필 사진 변경"><span class="av lg">?</span></button>
+    <div class="me-id"><div class="me-mail" id="meMail"></div><div class="me-hint">사진을 눌러 바꿀 수 있습니다</div></div>
   </div>
   <input type="file" id="meFile" accept="image/*" hidden>
-  <div class="fld"><label>Display name</label><input id="meName" placeholder="e.g. Taeyoung Kim" autocomplete="off"></div>
-  <div class="modal-acts"><button class="cancel" id="meLogout">Log out</button><button class="save" id="meSave">Save</button></div>
+  <div class="fld"><label>표시 이름</label><input id="meName" placeholder="예: 김태영" autocomplete="off"></div>
+  <div class="modal-acts"><button class="cancel" id="meLogout">로그아웃</button><button class="save" id="meSave">저장</button></div>
 </div>
-<div class="modal" id="settingsModal" role="dialog" aria-modal="true" aria-label="Settings">
-  <h3>Settings</h3>
-  <div class="fld"><label>Theme</label>
+<div class="modal" id="settingsModal" role="dialog" aria-modal="true" aria-label="설정">
+  <h3>설정</h3>
+  <div class="fld"><label>테마</label>
     <div class="swatches" id="themeSwatches"></div>
-    <div class="me-hint" style="margin-top:9px">“Auto” follows your system, and switches to dark at night (9pm–5am).</div>
+    <div class="me-hint" style="margin-top:9px">“자동”은 시스템 설정을 따르고, 밤(오후 9시–오전 5시)에는 다크로 바뀝니다.</div>
   </div>
-  <div class="fld"><label>Accent color</label>
+  <div class="fld"><label>강조색</label>
     <div class="swatches" id="accentSwatches"></div>
-    <div class="me-hint" style="margin-top:9px">“Auto” follows the season — spring pink, summer teal, autumn orange, winter blue.</div>
+    <div class="me-hint" style="margin-top:9px">“자동”은 계절을 따릅니다 — 봄 분홍, 여름 청록, 가을 주황, 겨울 파랑.</div>
   </div>
-  <div class="modal-acts"><button class="save" data-close>Done</button></div>
+  <div class="modal-acts"><button class="save" data-close>완료</button></div>
 </div>
 <div class="modal confirm" id="confirmModal" role="alertdialog" aria-modal="true" aria-labelledby="cfTitle">
-  <h3 id="cfTitle">Delete?</h3>
+  <h3 id="cfTitle">삭제할까요?</h3>
   <p class="cf-body" id="cfBody"></p>
-  <div class="modal-acts"><button class="cancel" id="cfNo">Cancel</button><button class="danger-act" id="cfYes">Delete</button></div>
+  <div class="modal-acts"><button class="cancel" id="cfNo">취소</button><button class="danger-act" id="cfYes">삭제</button></div>
 </div>
 <div class="scrim" id="scrim"></div>
-<div class="modal" id="todoModal" role="dialog" aria-modal="true" aria-label="Add task">
-  <h3>Add task</h3>
+<div class="modal" id="todoModal" role="dialog" aria-modal="true" aria-label="할일 추가">
+  <h3>할일 추가</h3>
   <div class="fld-from" id="tFrom" hidden></div>
-  <div class="fld"><label>Title</label><input id="tTitle" placeholder="e.g. Review the proposal" autocomplete="off"></div>
-  <div class="fld"><label>Due date (optional)</label><input id="tDue" type="date"></div>
-  <div class="modal-acts"><button class="cancel" data-close>Cancel</button><button class="save" id="tSave">Add</button></div>
+  <div class="fld"><label>제목</label><input id="tTitle" placeholder="예: 제안서 검토" autocomplete="off"></div>
+  <div class="fld"><label>마감일 (선택)</label><input id="tDue" type="date"></div>
+  <div class="modal-acts"><button class="cancel" data-close>취소</button><button class="save" id="tSave">추가</button></div>
 </div>
 <!-- 모달: 참조 연결(REFERS_TO) -->
 <div class="modal" id="linkModal" role="dialog" aria-modal="true" aria-labelledby="lkTitle">
-  <h3 id="lkTitle">Link to…</h3>
-  <div class="fld"><input id="lkQ" placeholder="Search tasks, events and notes" autocomplete="off" aria-label="Search items to link"></div>
-  <div class="lk-list" id="lkList" role="listbox" aria-label="Items"></div>
-  <div class="modal-acts"><button class="cancel" data-close>Cancel</button></div>
+  <h3 id="lkTitle">연결할 항목…</h3>
+  <div class="fld"><input id="lkQ" placeholder="할일·일정·메모 검색" autocomplete="off" aria-label="연결할 항목 검색"></div>
+  <div class="lk-list" id="lkList" role="listbox" aria-label="항목"></div>
+  <div class="modal-acts"><button class="cancel" data-close>취소</button></div>
 </div>
 <!-- 모달: 일정 추가 -->
-<div class="modal" id="eventModal" role="dialog" aria-modal="true" aria-label="Add event">
-  <h3>Add event</h3>
+<div class="modal" id="eventModal" role="dialog" aria-modal="true" aria-label="일정 추가">
+  <h3>일정 추가</h3>
   <div class="fld-from" id="eFrom" hidden></div>
-  <div class="fld"><label>Title</label><input id="eTitle" placeholder="e.g. Team meeting" autocomplete="off"></div>
+  <div class="fld"><label>제목</label><input id="eTitle" placeholder="예: 팀 회의" autocomplete="off"></div>
   <div class="frow">
-    <div class="fld"><label>Date</label><input id="eDate" type="date"></div>
-    <div class="fld"><label>Time (optional)</label><input id="eTime" type="time"></div>
+    <div class="fld"><label>날짜</label><input id="eDate" type="date"></div>
+    <div class="fld"><label>시간 (선택)</label><input id="eTime" type="time"></div>
   </div>
-  <div class="modal-acts"><button class="cancel" data-close>Cancel</button><button class="save" id="eSave">Add</button></div>
+  <div class="modal-acts"><button class="cancel" data-close>취소</button><button class="save" id="eSave">추가</button></div>
 </div>
 
 <script>
@@ -1564,11 +1634,13 @@ async function refreshData() {
    서버가 state.json에서 NodeRel 그래프를 만들어 /api/state의 graph.links로 내려준다.
    화면에는 명시적 관계만 칩으로 보인다 — 날짜 관계(DUE_ON/ON)는 이미 기한·달력으로 보이기 때문. */
 const REL = {
-  SPAWNED: { out: 'Made', in: 'From note' },
-  SCHEDULED_AS: { out: 'Scheduled', in: 'For task' },
-  REFERS_TO: { out: 'Refers to', in: 'Referenced by' },
+  SPAWNED: { out: '만든 항목', in: '출처 메모' },
+  SCHEDULED_AS: { out: '잡은 일정', in: '대상 할일' },
+  REFERS_TO: { out: '참조', in: '참조됨' },
 };
-const noteTitle = (n) => (n.title || '').trim() || (n.text || '').trim().split('\n')[0].slice(0, 40) || 'Untitled';
+// 노드 종류(kind)는 CSS 클래스·비교에 쓰는 내부 값이라 영어로 두고, 화면에는 이 이름으로 보여 준다
+const KIND_KO = { Task: '할일', Event: '일정', Note: '메모', Day: '날짜' };
+const noteTitle = (n) => (n.title || '').trim() || (n.text || '').trim().split('\n')[0].slice(0, 40) || '제목 없음';
 const mdDate = (d) => (d ? `${+d.slice(5, 7)}/${+d.slice(8, 10)}` : '');
 function nodeOf(id) {
   let x = items.find((t) => t.id === id);
@@ -1589,9 +1661,9 @@ function relChips(id, emptyText) {
   const rs = relsOf(id);
   if (!rs.length) return emptyText ? `<div class="rels-none">${escapeHtml(emptyText)}</div>` : '';
   return `<div class="rels">${rs.map(({ l, out, o }) => `<span class="rel k-${o.kind}" role="button" tabindex="0" data-go="${escapeHtml(o.id)}"
-      data-lf="${escapeHtml(l.from)}" data-lt="${escapeHtml(l.to)}" data-ly="${l.type}" title="${escapeHtml(`${REL[l.type][out ? 'out' : 'in']} ${o.kind.toLowerCase()}: ${o.label}`)}">
+      data-lf="${escapeHtml(l.from)}" data-lt="${escapeHtml(l.to)}" data-ly="${l.type}" title="${escapeHtml(`${REL[l.type][out ? 'out' : 'in']} ${KIND_KO[o.kind]}: ${o.label}`)}">
       <span class="rk">${REL[l.type][out ? 'out' : 'in']}</span><span class="rt">${escapeHtml(o.label)}</span>
-      <button class="rx" data-unlink aria-label="Remove link">✕</button></span>`).join('')}</div>`;
+      <button class="rx" data-unlink aria-label="연결 삭제">✕</button></span>`).join('')}</div>`;
 }
 function showTab(v) { const b = document.querySelector(`.topnav .tab[data-view="${v}"]`); if (b && (!b.classList.contains('on') || b.dataset.group !== appMode)) selectTab(b); }
 function flash(sel) {
@@ -1614,8 +1686,8 @@ document.addEventListener('click', (e) => {
   e.stopPropagation();
   if (e.target.closest('[data-unlink]')) {
     const { lf: from, lt: to, ly: type } = chip.dataset;
-    confirmDelete(`Link "${chip.querySelector('.rk').textContent} ${chip.querySelector('.rt').textContent}"`).then((ok) => {
-      if (ok) post('/api/link', { action: 'remove', from, to, type }).then((r) => { if (!r.ok) showErr('Failed to remove the link'); refreshData(); });
+    confirmDelete(`연결 "${chip.querySelector('.rk').textContent} ${chip.querySelector('.rt').textContent}"`).then((ok) => {
+      if (ok) post('/api/link', { action: 'remove', from, to, type }).then((r) => { if (!r.ok) showErr('연결을 삭제하지 못했습니다'); refreshData(); });
     });
     return;
   }
@@ -1638,8 +1710,8 @@ function renderTodos() {
     <div class="item card ${it.done ? 'done' : ''}" data-id="${escapeHtml(it.id)}" role="button" tabindex="0" aria-pressed="${!!it.done}">
       <span class="chk"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span>
       <span class="body"><span class="title">${escapeHtml(it.title || it.text || '')}</span>${it.due ? `<span class="due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${escapeHtml(it.due)}</span>` : ''}${it.by ? `<span class="itby">${byBadge(it.by)}</span>` : ''}${relChips(it.id)}</span>
-      <button class="sch" data-sched="${escapeHtml(it.id)}" aria-label="Schedule time for this task" title="Schedule time for this task"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg></button>
-      ${isMine(it) ? `<button class="del" data-del="${escapeHtml(it.id)}" aria-label="Delete">✕</button>` : ''}
+      <button class="sch" data-sched="${escapeHtml(it.id)}" aria-label="이 할일을 할 시간 잡기" title="이 할일을 할 시간 잡기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg></button>
+      ${isMine(it) ? `<button class="del" data-del="${escapeHtml(it.id)}" aria-label="삭제">✕</button>` : ''}
     </div>`).join('');
   $('todoEmpty').style.display = items.length ? 'none' : 'block';
 }
@@ -1653,8 +1725,8 @@ $('todoList').addEventListener('click', (e) => {
   if (sch) { openEventFrom(sch.dataset.sched); return; }
   const del = e.target.closest('[data-del]');
   if (del) {
-    const t = del.closest('.item')?.querySelector('.title')?.textContent || 'this task';
-    confirmDelete(`Task "${t}"`).then((ok) => { if (ok) post('/api/todo-remove', { id: del.dataset.del }).then(refreshData); });
+    const t = del.closest('.item')?.querySelector('.title')?.textContent || '이 할일';
+    confirmDelete(`할일 "${t}"`).then((ok) => { if (ok) post('/api/todo-remove', { id: del.dataset.del }).then(refreshData); });
     return;
   }
   // 완료 처리는 앞의 체크박스(.chk)를 눌렀을 때만 — 항목 본문 클릭으로는 체크되지 않는다
@@ -1670,10 +1742,10 @@ let calY, calM, selDate; // calM: 0-11
 const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
 const weekLater = () => { const d = new Date(); d.setDate(d.getDate() + 7); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
 function initCal() { const d = new Date(); calY = d.getFullYear(); calM = d.getMonth(); selDate = today(); }
-const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DOW = ['일','월','화','수','목','금','토'];
+const monthTitle = (y, m) => `${y}년 ${m + 1}월`;   // m: 0-11
 function renderCalendar() {
-  $('calTitle').textContent = `${MONTHS[calM]} ${calY}`;
+  $('calTitle').textContent = monthTitle(calY, calM);
   const first = new Date(calY, calM, 1).getDay();
   const days = new Date(calY, calM + 1, 0).getDate();
   const byDate = {};
@@ -1702,21 +1774,21 @@ function renderDay() {
   const evs = events.filter((e) => e.date === selDate).sort((a, b) => (a.time || '99').localeCompare(b.time || '99'));
   const dues = items.filter((x) => x.due === selDate);
   const [y, m, d] = selDate.split('-');
-  $('dayHead').textContent = `${MONTHS[+m - 1]} ${+d} · ${evs.length} event${evs.length === 1 ? '' : 's'}${dues.length ? ` · ${dues.length} due` : ''}`;
+  $('dayHead').textContent = `${+m}월 ${+d}일 · 일정 ${evs.length}개${dues.length ? ` · 마감 ${dues.length}개` : ''}`;
   const evHtml = evs.map((e) => `
     <div class="ev-item card ${e.done ? 'done' : ''}" data-id="${escapeHtml(e.id)}">
       <span class="chk" data-toggle><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;opacity:${e.done?1:0}"><path d="M4 12l5 5L20 6"/></svg></span>
-      <span class="etime">${e.time ? escapeHtml(e.time) : 'All day'}</span>
+      <span class="etime">${e.time ? escapeHtml(e.time) : '종일'}</span>
       <span class="etitle">${escapeHtml(e.title)}${relChips(e.id)}</span>
-      <button class="del" data-del aria-label="Delete">✕</button>
+      <button class="del" data-del aria-label="삭제">✕</button>
     </div>`).join('');
   const dueHtml = dues.map((x) => `
     <div class="ev-item card ${x.done ? 'done' : ''}" data-id="${escapeHtml(x.id)}" data-kind="todo">
       <span class="chk" data-toggle><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;opacity:${x.done?1:0}"><path d="M4 12l5 5L20 6"/></svg></span>
-      <span class="ebadge">Task due</span>
+      <span class="ebadge">할일 마감</span>
       <span class="etitle">${escapeHtml(x.title || x.text || '')}${relChips(x.id)}</span>
     </div>`).join('');
-  $('dayList').innerHTML = (evHtml + dueHtml) || `<div class="empty" style="padding:24px 0">No events on this day</div>`;
+  $('dayList').innerHTML = (evHtml + dueHtml) || `<div class="empty" style="padding:24px 0">이날은 일정이 없습니다</div>`;
 }
 $('dayList').addEventListener('click', (e) => {
   const el = e.target.closest('.ev-item'); if (!el) return;
@@ -1726,8 +1798,8 @@ $('dayList').addEventListener('click', (e) => {
     return;
   }
   if (e.target.closest('[data-del]')) {
-    const t = e.target.closest('.ev-item')?.querySelector('.etitle')?.textContent || 'this event';
-    confirmDelete(`Event "${t}"`).then((ok) => { if (ok) post('/api/event', { action: 'remove', id }).then(refreshData); });
+    const t = e.target.closest('.ev-item')?.querySelector('.etitle')?.textContent || '이 일정';
+    confirmDelete(`일정 "${t}"`).then((ok) => { if (ok) post('/api/event', { action: 'remove', id }).then(refreshData); });
     return;
   }
   if (e.target.closest('[data-toggle]')) { post('/api/event', { action: 'done', id, done: !el.classList.contains('done') }).then((r) => { if (!r.ok) refreshData(); }); el.classList.toggle('done'); return; }
@@ -1746,7 +1818,7 @@ function renderUpcoming() {
       <span class="mark"></span>
       <span class="ud">${+u.date.slice(5, 7)}/${+u.date.slice(8, 10)}</span>
       <span class="ut">${escapeHtml(u.title)}${u.time ? ` · ${escapeHtml(u.time)}` : ''}</span>
-    </div>`).join('') : `<div class="empty" style="padding:14px 0;font-size:12.5px">Nothing coming up</div>`;
+    </div>`).join('') : `<div class="empty" style="padding:14px 0;font-size:12.5px">다가오는 일정이 없습니다</div>`;
 }
 $('upList').addEventListener('click', (e) => {
   const el = e.target.closest('.up-item[data-date]'); if (el) gotoDate(el.dataset.date);
@@ -1767,12 +1839,12 @@ function renderMemos() {
   if (memoSel && !list.some((n) => n.id === memoSel)) memoSel = null;
   if (!memoSel && list.length) memoSel = list[0].id;
   $('memoList').innerHTML = list.map((n) => {
-    const title = (n.title || '').trim() || (n.text || '').trim().split('\n')[0].slice(0, 40) || 'Untitled';
+    const title = (n.title || '').trim() || (n.text || '').trim().split('\n')[0].slice(0, 40) || '제목 없음';
     const prev = (n.text || '').trim().replace(/\s+/g, ' ').slice(0, 60);
     const d = String(n.updatedAt || '').slice(0, 10);
     return `<div class="memo-item ${n.id === memoSel ? 'sel' : ''}" data-id="${escapeHtml(n.id)}" role="button" tabindex="0">
       <div class="mtop"><span class="mt">${escapeHtml(title)}</span>${
-        isMine(n) ? `<button class="del" data-del="${escapeHtml(n.id)}" aria-label="Delete note">✕</button>` : ''}</div>
+        isMine(n) ? `<button class="del" data-del="${escapeHtml(n.id)}" aria-label="메모 삭제">✕</button>` : ''}</div>
       ${prev ? `<div class="mp">${escapeHtml(prev)}</div>` : ''}
       <div class="md">${d ? escapeHtml(d) : ''}${n.by ? ' · ' + escapeHtml(displayName(n.by)) : ''}</div>
     </div>`; }).join('');
@@ -1787,40 +1859,40 @@ function fillMemoEditor() {
   // 입력 중에는 서버 갱신이 편집 내용을 덮어쓰지 않게 한다
   if (!memoEditing()) { $('mmTitle').value = n.title || ''; $('mmBody').value = n.text || ''; $('mmState').textContent = ''; }
   $('memoEditor').dataset.id = n.id;
-  $('mmRels').innerHTML = relChips(n.id, 'No links yet — select a line and press → Task or → Event');
+  $('mmRels').innerHTML = relChips(n.id, '아직 연결이 없습니다 — 한 줄을 선택하고 → 할일 또는 → 일정을 누르세요');
 }
 async function saveMemo(id) {
   const n = notes.find((x) => x.id === id); if (!n) return;
   n.title = $('mmTitle').value; n.text = $('mmBody').value; // 로컬 선반영(목록 미리보기)
-  $('mmState').textContent = 'Saving…';
+  $('mmState').textContent = '저장 중…';
   try {
     const r = await post('/api/note', { action: 'update', id, title: n.title, text: n.text });
-    if (r.ok) { const j = await r.json(); dataVersion = j.version || dataVersion; $('mmState').textContent = 'Saved'; }
-    else { $('mmState').textContent = 'Save failed'; showErr('Failed to save the note'); }
-  } catch { $('mmState').textContent = 'Save failed'; showErr('Failed to save the note'); }
+    if (r.ok) { const j = await r.json(); dataVersion = j.version || dataVersion; $('mmState').textContent = '저장됨'; }
+    else { $('mmState').textContent = '저장 실패'; showErr('메모를 저장하지 못했습니다'); }
+  } catch { $('mmState').textContent = '저장 실패'; showErr('메모를 저장하지 못했습니다'); }
   renderMemos();
 }
 function memoInput() {
   const id = $('memoEditor').dataset.id; if (!id) return;
-  $('mmState').textContent = 'Typing…';
+  $('mmState').textContent = '입력 중…';
   clearTimeout(memoSaveTimer);
   memoSaveTimer = setTimeout(() => saveMemo(id), 700);
 }
 $('mmTitle').addEventListener('input', memoInput);
 $('mmBody').addEventListener('input', memoInput);
 $('addMemoBtn').onclick = async () => {
-  let r; try { r = await post('/api/note', { action: 'add' }); } catch { showErr('Failed to add a note'); return; }
-  if (!r.ok) { showErr('Failed to add a note'); return; }
+  let r; try { r = await post('/api/note', { action: 'add' }); } catch { showErr('메모를 추가하지 못했습니다'); return; }
+  if (!r.ok) { showErr('메모를 추가하지 못했습니다'); return; }
   const j = await r.json(); memoSel = j.id;
   await refreshData();
   $('mmTitle').focus();
 };
 function removeMemo(id) {
   if (memoSel === id) memoSel = null;
-  const t = (notes.find((n) => n.id === id) || {}).title || 'untitled note';
-  confirmDelete(`Note "${t}"`).then((ok) => {
+  const t = (notes.find((n) => n.id === id) || {}).title || '제목 없는 메모';
+  confirmDelete(`메모 "${t}"`).then((ok) => {
     if (!ok) return;
-    post('/api/note', { action: 'remove', id }).then((r) => { if (!r.ok) showErr('Failed to delete the note'); refreshData(); }).catch(() => showErr('Failed to delete the note'));
+    post('/api/note', { action: 'remove', id }).then((r) => { if (!r.ok) showErr('메모를 삭제하지 못했습니다'); refreshData(); }).catch(() => showErr('메모를 삭제하지 못했습니다'));
   });
 }
 // 빈 메모 자동 정리(진화 #3): 편집기 이탈·탭 전환·다른 메모 선택 시 제목과 내용이 모두 빈 메모를 지운다.
@@ -1868,25 +1940,25 @@ $('memoList').addEventListener('keydown', (e) => {
 
 /* ---- 요청 (에이전트 → 사용자) ----
    에이전트가 이 시스템을 더 잘 운용하려고 사용자에게 부탁하는 것. 답은 채팅으로 에이전트에게 전달된다. */
-const REQ_KIND = { info: 'Needs info', decision: 'Decision', action: 'To do', access: 'Access', approval: 'Approval' };
+const REQ_KIND = { info: '정보 필요', decision: '결정', action: '할 일', access: '접근 권한', approval: '승인' };
 // 승인 계열은 Collaborate › Approvals, 나머지(action·info)는 › Requests
 const APPROVAL_KINDS = ['approval', 'decision', 'access'];
 let requestsCache = [];
 function reqCard(r, closed) {
   const kind = REQ_KIND[r.kind] ? r.kind : 'info';
   const ref = r.ref ? nodeOf(r.ref) : null;
-  const refChip = ref ? `<div class="rels"><span class="rel k-${ref.kind}" role="button" tabindex="0" data-go="${escapeHtml(ref.id)}"><span class="rk">${ref.kind}</span><span class="rt">${escapeHtml(ref.label)}</span></span></div>` : '';
-  const ans = r.answer ? `<div class="req-ans"><b>You:</b>${escapeHtml(r.answer)}</div>` : '';
+  const refChip = ref ? `<div class="rels"><span class="rel k-${ref.kind}" role="button" tabindex="0" data-go="${escapeHtml(ref.id)}"><span class="rk">${KIND_KO[ref.kind]}</span><span class="rt">${escapeHtml(ref.label)}</span></span></div>` : '';
+  const ans = r.answer ? `<div class="req-ans"><b>나:</b>${escapeHtml(r.answer)}</div>` : '';
   let body = '';
   if (closed) {
-    body = `${r.status === 'failed' && r.failReason ? `<div class="fail-why">✗ ${escapeHtml(r.failReason)}</div>` : ''}<div class="evo-acts"><span class="req-st ${r.status}">${r.status === 'done' ? '✓ Done' : r.status === 'failed' ? '✗ Failed' : 'Not now'}</span><button class="reopen">${r.status === 'failed' ? 'Try again' : 'Reopen'}</button></div>`;
+    body = `${r.status === 'failed' && r.failReason ? `<div class="fail-why">✗ ${escapeHtml(r.failReason)}</div>` : ''}<div class="evo-acts"><span class="req-st ${r.status}">${r.status === 'done' ? '✓ 완료' : r.status === 'failed' ? '✗ 실패' : '나중에'}</span><button class="reopen">${r.status === 'failed' ? '다시 시도' : '다시 열기'}</button></div>`;
   } else if (r.status === 'answered') {
-    body = `<div class="req-wait">Sent to the agent — it will act on your answer</div>
-      <div class="evo-acts"><button class="done">Mark done</button><button class="fail">Failed</button><button class="talk">Discuss</button><button class="reopen">Answer again</button></div>`;
+    body = `<div class="req-wait">에이전트에게 보냈습니다 — 답에 따라 처리합니다</div>
+      <div class="evo-acts"><button class="done">완료 처리</button><button class="fail">실패</button><button class="talk">상의하기</button><button class="reopen">다시 답하기</button></div>`;
   } else {
     body = `${(r.options || []).length ? `<div class="req-opts">${r.options.map((o) => `<button class="opt" data-opt="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>` : ''}
-      <div class="req-reply"><textarea rows="1" placeholder="${r.kind === 'action' ? 'Anything the agent should know? (optional)' : 'Reply to the agent…'}" aria-label="Reply"></textarea><button class="send">Send</button></div>
-      <div class="evo-acts"><button class="done">${r.kind === 'action' || r.kind === 'access' ? 'I did it' : 'Resolved'}</button><button class="talk">Discuss</button><button class="ignore">Not now</button></div>`;
+      <div class="req-reply"><textarea rows="1" placeholder="${r.kind === 'action' ? '에이전트가 알아야 할 것이 있나요? (선택)' : '에이전트에게 답하기…'}" aria-label="답장"></textarea><button class="send">보내기</button></div>
+      <div class="evo-acts"><button class="done">${r.kind === 'action' || r.kind === 'access' ? '했어요' : '해결됨'}</button><button class="talk">상의하기</button><button class="ignore">나중에</button></div>`;
   }
   return `<div class="req-card card ${r.status}" data-rid="${Number(r.id) || 0}"><div class="evo-top">
     <span class="req-kind ${kind}">${REQ_KIND[kind]}</span><span class="req-t">${escapeHtml(r.title)}</span><span class="req-when">#${Number(r.id) || 0}</span></div>
@@ -1894,7 +1966,7 @@ function reqCard(r, closed) {
 }
 /* ---- 협업 목록: 대기 · 처리 중 · 완료 · 취소 ----
    세 탭(Evolve · Approvals · Requests)이 같은 네 상태로 나뉜다. 탭마다 고른 상태를 기억한다. */
-const ST_BUCKETS = [['wait', 'Waiting'], ['doing', 'In progress'], ['done', 'Done'], ['fail', 'Failed'], ['cancel', 'Cancelled']];
+const ST_BUCKETS = [['wait', '대기'], ['doing', '처리 중'], ['done', '완료'], ['fail', '실패'], ['cancel', '취소']];
 const BUCKET_OF = {
   evo: { new: 'wait', doing: 'doing', done: 'done', failed: 'fail', dismissed: 'cancel' },
   req: { open: 'wait', answered: 'doing', done: 'done', failed: 'fail', dismissed: 'cancel' },
@@ -1902,10 +1974,10 @@ const BUCKET_OF = {
   upd: { new: 'wait', doing: 'doing', done: 'done', failed: 'fail', dismissed: 'cancel' },
 };
 const ST_EMPTY = {
-  evo: { wait: 'No new proposals — try [Ask the agent to analyze]', doing: 'Nothing being built right now', done: 'No finished proposals yet', fail: 'Nothing failed', cancel: 'Nothing ignored' },
-  appr: { wait: 'Nothing waiting for your approval', doing: 'Nothing in progress', done: 'Nothing approved or resolved yet', fail: 'Nothing failed', cancel: 'Nothing rejected or dismissed' },
-  upd: { wait: 'Nothing new — press [Check for updates]', doing: 'Nothing being updated right now', done: 'No updates applied yet', fail: 'Nothing failed', cancel: 'Nothing cancelled — cancelled updates stay hidden from later checks' },
-  req: { wait: 'No open requests — try [Ask the agent what it needs]', doing: 'Nothing in progress — answered requests show here until they are done', done: 'Nothing done yet', fail: 'Nothing failed', cancel: 'Nothing dismissed' },
+  evo: { wait: '새 제안이 없습니다 — [에이전트에게 분석 요청]을 눌러 보세요', doing: '지금 만들고 있는 것이 없습니다', done: '아직 완료된 제안이 없습니다', fail: '실패한 것이 없습니다', cancel: '무시한 것이 없습니다' },
+  appr: { wait: '승인을 기다리는 것이 없습니다', doing: '처리 중인 것이 없습니다', done: '아직 승인하거나 해결한 것이 없습니다', fail: '실패한 것이 없습니다', cancel: '거절하거나 넘긴 것이 없습니다' },
+  upd: { wait: '새로운 것이 없습니다 — [업데이트 확인]을 눌러 보세요', doing: '지금 업데이트 중인 것이 없습니다', done: '아직 적용한 업데이트가 없습니다', fail: '실패한 것이 없습니다', cancel: '취소한 것이 없습니다 — 취소한 업데이트는 이후 확인에서 숨겨집니다' },
+  req: { wait: '열린 요청이 없습니다 — [에이전트에게 필요한 것 묻기]를 눌러 보세요', doing: '처리 중인 것이 없습니다 — 답한 요청은 끝날 때까지 여기에 보입니다', done: '아직 완료한 것이 없습니다', fail: '실패한 것이 없습니다', cancel: '넘긴 것이 없습니다' },
 };
 let stFilter = { evo: 'wait', appr: 'wait', req: 'wait', upd: 'wait' };
 try { Object.assign(stFilter, JSON.parse(localStorage.getItem('ana-collab-filter') || '{}')); } catch {}
@@ -1947,7 +2019,7 @@ function renderRequestsAll() {
   const ak = stFilter.appr;
   renderStSeg('appr', Object.fromEntries(ST_BUCKETS.map(([b]) => [b, apprReq[b].length + diffs[b].length])));
   $('apprDiffHead').hidden = !diffs[ak].length; $('apprDiffCnt').textContent = diffs[ak].length || '';
-  $('apprDiffs').innerHTML = diffs[ak].map((p) => propCard(p.id, p.text || 'Change proposal')).join('');
+  $('apprDiffs').innerHTML = diffs[ak].map((p) => propCard(p.id, p.text || '변경 제안')).join('');
   renderReqBox('appr', apprReq, { head: !!diffs[ak].length });
   const emptyA = !apprReq[ak].length && !diffs[ak].length;
   $('apprEmpty').textContent = ST_EMPTY.appr[ak]; $('apprEmpty').style.display = emptyA ? 'block' : 'none';
@@ -1972,21 +2044,22 @@ function renderApprovals() { renderRequestsAll(); }
 $('apprDiffs').addEventListener('click', (e) => {
   const pbtn = e.target.closest('.prop button'); if (!pbtn) return;
   const decision = pbtn.classList.contains('ok') ? 'approve' : 'reject'; const pid = Number(pbtn.closest('.prop').dataset.pid);
-  post('/api/approve', { pid, decision }).then((r) => { if (!r.ok) r.json().then((x) => showErr(x.error || 'Approval failed')).catch(() => {}); }).catch(() => showErr('Approval failed'));
+  post('/api/approve', { pid, decision }).then((r) => { if (!r.ok) r.json().then((x) => showErr(x.error || '승인하지 못했습니다')).catch(() => {}); }).catch(() => showErr('승인하지 못했습니다'));
 });
 
 /* ---- System › Trustworthiness · Safety · Security ---- 서버가 계산한 점검(/api/trust)을 카드로. 1분마다, 보일 때만 */
 const TRUST_ICON = { ok: '✓', info: 'i', warn: '!', risk: '!' };
+const TRUST_STATUS = { ok: '정상', info: '참고', warn: '확인 필요', risk: '위험' };
 async function refreshTrust() {
   let d; try { d = await (await getJSON('/api/trust')); } catch { return; }
   if (!d || d.error) return;
   for (const sec of ['reliability', 'safety', 'security']) {
     const g = d[sec]; if (!g) continue;
     const ok = g.checks.filter((c) => c.status === 'ok').length;
-    document.querySelector(`[data-trust-sum="${sec}"]`).innerHTML = [g.risk ? `<span class="pill risk">${g.risk} at risk</span>` : '', g.warn ? `<span class="pill warn">${g.warn} to review</span>` : '',
-      `<span class="pill ok">${ok} OK</span>`].join('');
+    document.querySelector(`[data-trust-sum="${sec}"]`).innerHTML = [g.risk ? `<span class="pill risk">위험 ${g.risk}</span>` : '', g.warn ? `<span class="pill warn">확인 필요 ${g.warn}</span>` : '',
+      `<span class="pill ok">정상 ${ok}</span>`].join('');
     const order = { risk: 0, warn: 1, info: 2, ok: 3 };
-    document.querySelector(`[data-trust="${sec}"]`).innerHTML = g.checks.slice().sort((a, b) => order[a.status] - order[b.status]).map((c) => `<div class="tcheck card ${c.status}" role="group" aria-label="${escapeHtml(c.status)}: ${escapeHtml(c.label)}">
+    document.querySelector(`[data-trust="${sec}"]`).innerHTML = g.checks.slice().sort((a, b) => order[a.status] - order[b.status]).map((c) => `<div class="tcheck card ${c.status}" role="group" aria-label="${escapeHtml(TRUST_STATUS[c.status] || c.status)}: ${escapeHtml(c.label)}">
       <span class="ti" aria-hidden="true">${TRUST_ICON[c.status] || '·'}</span><div class="tl">${escapeHtml(c.label)}${c.value ? `<span class="tv">${escapeHtml(c.value)}</span>` : ''}</div>
       ${c.detail ? `<div class="td">${escapeHtml(c.detail)}</div>` : ''}${(c.items || []).length ? `<ul>${c.items.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : ''}</div>`).join('');
   }
@@ -1994,8 +2067,8 @@ async function refreshTrust() {
 }
 setInterval(() => { if (!document.hidden) refreshTrust(); }, 60000);
 async function reqAct(id, action, answer, reason) {
-  let r; try { r = await post('/api/request-act', { id, action, answer, reason }); } catch { showErr('Failed to update the request'); return false; }
-  if (!r.ok) { showErr((await r.json().catch(() => ({}))).error || 'Failed to update the request'); return false; }
+  let r; try { r = await post('/api/request-act', { id, action, answer, reason }); } catch { showErr('요청을 처리하지 못했습니다'); return false; }
+  if (!r.ok) { showErr((await r.json().catch(() => ({}))).error || '요청을 처리하지 못했습니다'); return false; }
   refreshRequests(); return true;
 }
 async function reqAnswer(card, answer) {
@@ -2003,9 +2076,9 @@ async function reqAnswer(card, answer) {
   const id = Number(card.dataset.rid), r = requestsCache.find((x) => x.id === id); if (!r) return;
   if (!(await reqAct(id, 'answer', answer))) return;
   openChat();
-  const msg = `[Request #${id}] You asked: "${r.title}"\nMy answer: ${answer}\nAct on it, then mark the request done: POST http://${location.host}/api/request-act {"id":${id},"action":"done"}`;
-  post('/api/chat', { text: msg, force: true }).then((x) => { if (!x.ok) x.json().then((e) => showErr(e.error || 'Could not send the answer to the agent')).catch(() => {}); })
-    .catch(() => showErr('Could not send the answer to the agent'));
+  const msg = `[요청 #${id}] 물어본 것: "${r.title}"\n내 답: ${answer}\n이 답대로 처리한 뒤 요청을 완료로 표시해 줘: POST http://${location.host}/api/request-act {"id":${id},"action":"done"}`;
+  post('/api/chat', { text: msg, force: true }).then((x) => { if (!x.ok) x.json().then((e) => showErr(e.error || '에이전트에게 답을 보내지 못했습니다')).catch(() => {}); })
+    .catch(() => showErr('에이전트에게 답을 보내지 못했습니다'));
 }
 ['reqList', 'apprList'].forEach((box) => $(box).addEventListener('click', (e) => {
   const card = e.target.closest('.req-card'), btn = e.target.closest('button');
@@ -2017,28 +2090,28 @@ async function reqAnswer(card, answer) {
   else if (btn.classList.contains('fail')) reqAct(id, 'fail', undefined, (card.querySelector('textarea') || {}).value);
   else if (btn.classList.contains('ignore')) reqAct(id, 'dismiss');
   else if (btn.classList.contains('reopen')) reqAct(id, 'reopen');
-  else if (btn.classList.contains('talk')) { addChip('Request', `#${id} ${card.querySelector('.req-t').textContent}`); openChat(); setTimeout(() => $('input').focus(), 60); }
+  else if (btn.classList.contains('talk')) { addChip('요청', `#${id} ${card.querySelector('.req-t').textContent}`); openChat(); setTimeout(() => $('input').focus(), 60); }
 }));
 $('reqList').addEventListener('keydown', (e) => {
   if (e.key !== 'Enter' || e.shiftKey || e.isComposing || !e.target.matches('.req-reply textarea')) return;
   e.preventDefault(); reqAnswer(e.target.closest('.req-card'), e.target.value);
 });
 $('reqAsk').onclick = () => {
-  const b = $('reqAsk'); b.disabled = true; const orig = b.textContent; b.textContent = 'Requesting…';
+  const b = $('reqAsk'); b.disabled = true; const orig = b.textContent; b.textContent = '요청하는 중…';
   const h = location.host;
-  const prompt = `[Requests] Look at how this system is being run — tasks, notes, calendar, their relations and our recent conversation — and register work you need FROM ME: actions only I can do (kind action) and information you are missing (kind info). Things you need my OK for go in as kind approval / decision / access (they show under Approvals). Do not register changes to the app itself (those are Evolve proposals).
-Register: curl -s -X POST http://${h}/api/requests -H 'content-type: application/json' -d '{"requests":[{"kind":"decision","title":"Short question","desc":"Why it matters","options":["A","B"],"ref":"<optional task/event/note id>"}]}' (kind is action|info|approval|decision|access; options only for decisions).
-Where the flow breaks: GET http://${h}/api/stats (graph.gaps) · relations: GET http://${h}/api/graph/schema · open requests: GET http://${h}/api/requests.`;
-  post('/api/chat', { text: prompt, force: true }).then((r) => { if (!r.ok) r.json().then((e) => showErr(e.error || 'Request failed')).catch(() => {}); else openChat(); })
-    .catch(() => showErr('Request failed')).finally(() => { b.disabled = false; b.textContent = orig; });
+  const prompt = `[요청] 이 시스템이 어떻게 운영되고 있는지 — 할일, 메모, 일정, 그 관계, 최근 대화 — 를 살펴보고 나에게 필요한 일을 등록해 줘: 나만 할 수 있는 일(kind action)과 너에게 없는 정보(kind info). 내 승인이 필요한 것은 kind approval / decision / access로 등록해(승인 탭에 보인다). 앱 자체를 바꾸는 것은 등록하지 마(그건 진화 제안이다).
+등록: curl -s -X POST http://${h}/api/requests -H 'content-type: application/json' -d '{"requests":[{"kind":"decision","title":"짧은 질문","desc":"왜 중요한지","options":["A","B"],"ref":"<선택: 할일/일정/메모 id>"}]}' (kind는 action|info|approval|decision|access, options는 decision에만).
+흐름이 끊긴 곳: GET http://${h}/api/stats (graph.gaps) · 관계: GET http://${h}/api/graph/schema · 열린 요청: GET http://${h}/api/requests.`;
+  post('/api/chat', { text: prompt, force: true }).then((r) => { if (!r.ok) r.json().then((e) => showErr(e.error || '요청하지 못했습니다')).catch(() => {}); else openChat(); })
+    .catch(() => showErr('요청하지 못했습니다')).finally(() => { b.disabled = false; b.textContent = orig; });
 };
 $('apprAsk').onclick = () => {
-  const b = $('apprAsk'); b.disabled = true; const orig = b.textContent; b.textContent = 'Requesting…';
+  const b = $('apprAsk'); b.disabled = true; const orig = b.textContent; b.textContent = '요청하는 중…';
   const h = location.host;
-  const prompt = `[Approvals] Before you go on with any work, list what you need my OK for — a step you should not take on your own (deleting or overwriting things, spending money, sending messages to other people, changing settings), a choice between options, or access you need me to grant. Register each one; I will approve or reject it in Collaborate › Approvals. Data changes to the board still go through the diff → approve flow.
-Register: curl -s -X POST http://${h}/api/requests -H 'content-type: application/json' -d '{"requests":[{"kind":"approval","title":"What you want to do","desc":"Why, and what happens if I say no","options":["Approve","Reject"],"ref":"<optional task/event/note id>"}]}' (kind is approval|decision|access). Open ones: GET http://${h}/api/requests.`;
-  post('/api/chat', { text: prompt, force: true }).then((r) => { if (!r.ok) r.json().then((e) => showErr(e.error || 'Request failed')).catch(() => {}); else openChat(); })
-    .catch(() => showErr('Request failed')).finally(() => { b.disabled = false; b.textContent = orig; });
+  const prompt = `[승인] 일을 더 진행하기 전에 내 승인이 필요한 것을 정리해 줘 — 혼자 하면 안 되는 단계(지우거나 덮어쓰기, 돈 쓰기, 다른 사람에게 메시지 보내기, 설정 바꾸기), 선택지 중 고르기, 내가 열어 줘야 하는 접근 권한. 하나씩 등록하면 협업 › 승인에서 승인하거나 거절할게. 보드의 데이터 변경은 지금처럼 diff → 승인 흐름을 거친다.
+등록: curl -s -X POST http://${h}/api/requests -H 'content-type: application/json' -d '{"requests":[{"kind":"approval","title":"하려는 일","desc":"이유, 그리고 거절하면 어떻게 되는지","options":["승인","거절"],"ref":"<선택: 할일/일정/메모 id>"}]}' (kind는 approval|decision|access). 열린 것: GET http://${h}/api/requests.`;
+  post('/api/chat', { text: prompt, force: true }).then((r) => { if (!r.ok) r.json().then((e) => showErr(e.error || '요청하지 못했습니다')).catch(() => {}); else openChat(); })
+    .catch(() => showErr('요청하지 못했습니다')).finally(() => { b.disabled = false; b.textContent = orig; });
 };
 
 /* ---- 진화 ---- */
@@ -2052,19 +2125,20 @@ function renderEvolve() {
   renderStSeg('evo', Object.fromEntries(ST_BUCKETS.map(([b]) => [b, B[b].length])));
   $('evoBadge').textContent = B.wait.length; $('evoBadge').classList.toggle('show', B.wait.length > 0); updateSysBadge();
   const TYPES = { improve: 'improve', add: 'add', remove: 'remove' };
+  const TYPE_KO = { improve: '개선', add: '추가', remove: '제거' };
   const ACTS = {
-    wait: '<button class="talk">Discuss</button><button class="do">Do it</button><button class="ignore">Ignore</button>',
-    doing: '<button class="talk">Discuss</button><button class="done">Mark done</button><button class="fail">Failed</button><button class="ignore">Cancel</button>',
-    fail: '<button class="talk">Discuss</button><button class="reopen">Try again</button>',
-    done: '<button class="reopen">Reopen</button>',
-    cancel: '<button class="reopen">Restore</button>',
+    wait: '<button class="talk">상의하기</button><button class="do">실행</button><button class="ignore">무시</button>',
+    doing: '<button class="talk">상의하기</button><button class="done">완료 처리</button><button class="fail">실패</button><button class="ignore">취소</button>',
+    fail: '<button class="talk">상의하기</button><button class="reopen">다시 시도</button>',
+    done: '<button class="reopen">다시 열기</button>',
+    cancel: '<button class="reopen">되살리기</button>',
   };
   $('evoList').innerHTML = B[k].map((p) => {
     const type = TYPES[p.type] || 'improve'; const id = Number(p.id) || 0;
     return `<div class="evo-card card ${escapeHtml(p.status)}" data-eid="${id}"><div class="evo-top">
-      <span class="evo-type ${type}">${type}</span><span class="evo-t">${escapeHtml(p.title)}</span><span class="evo-when">#${id}${k !== 'wait' && whenTxt(p) ? ' · ' + whenTxt(p) : ''}</span></div>
+      <span class="evo-type ${type}">${TYPE_KO[type]}</span><span class="evo-t">${escapeHtml(p.title)}</span><span class="evo-when">#${id}${k !== 'wait' && whenTxt(p) ? ' · ' + whenTxt(p) : ''}</span></div>
       ${p.desc ? `<div class="evo-d">${escapeHtml(p.desc)}</div>` : ''}
-      ${p.status === 'failed' ? `<div class="fail-why">✗ Failed${p.failReason ? ' — ' + escapeHtml(p.failReason) : ''}</div>` : ''}
+      ${p.status === 'failed' ? `<div class="fail-why">✗ 실패${p.failReason ? ' — ' + escapeHtml(p.failReason) : ''}</div>` : ''}
       <div class="evo-acts">${ACTS[k]}</div>
     </div>`; }).join('');
   $('evoEmpty').textContent = ST_EMPTY.evo[k]; $('evoEmpty').style.display = B[k].length ? 'none' : 'block';
@@ -2075,22 +2149,22 @@ $('evoList').addEventListener('click', (e) => {
   const id = Number(card.dataset.eid);
   const title = card.querySelector('.evo-t')?.textContent || '';
   const desc = card.querySelector('.evo-d')?.textContent || '';
-  if (btn.classList.contains('talk')) { addChip('Proposal', title); openChat(); setTimeout(() => $('input').focus(), 60); return; } // 제안을 컨텍스트 칩으로 등록
+  if (btn.classList.contains('talk')) { addChip('제안', title); openChat(); setTimeout(() => $('input').focus(), 60); return; } // 제안을 컨텍스트 칩으로 등록
   const action = ['do', 'done', 'fail', 'reopen', 'ignore'].find((a) => btn.classList.contains(a)) || 'ignore';
-  post('/api/evolve-act', { id, action }).then((r) => { if (!r.ok) showErr('Failed to process the proposal'); refreshEvolve(); }).catch(() => showErr('Failed to process the proposal'));
+  post('/api/evolve-act', { id, action }).then((r) => { if (!r.ok) showErr('제안을 처리하지 못했습니다'); refreshEvolve(); }).catch(() => showErr('제안을 처리하지 못했습니다'));
   // '수행'은 상태만 바꾸지 않고 코딩 에이전트에게 실제 구현을 지시 + 채팅을 연다(대화가 시작됨).
   if (action === 'do') {
     openChat();
-    post('/api/chat', { text: `[Evolve] Implement/apply proposal #${id} "${title}"${desc ? ' — ' + desc : ''}. Tell me when it's done.`, force: true })
-      .then((r) => { if (!r.ok) r.json().then((x) => showErr(x.error || 'Failed to send the request (agent not connected?)')).catch(() => {}); })
-      .catch(() => showErr('Failed to send the request'));
+    post('/api/chat', { text: `[진화] 제안 #${id} "${title}"${desc ? ' — ' + desc : ''}을(를) 구현·적용해 줘. 끝나면 알려 줘.`, force: true })
+      .then((r) => { if (!r.ok) r.json().then((x) => showErr(x.error || '요청을 보내지 못했습니다(에이전트가 연결돼 있나요?)')).catch(() => {}); })
+      .catch(() => showErr('요청을 보내지 못했습니다'));
   }
 });
 $('evoAnalyze').onclick = () => {
-  const b = $('evoAnalyze'); b.disabled = true; const orig = b.textContent; b.textContent = 'Requesting…';
-  const prompt = `[Evolve] Look at this app's current features, the data in it, and how it is being used (usage log: GET http://${location.host}/api/activity, plus our recent conversation), then propose how the app should evolve — register improve/add/remove proposals.\nRegister: curl -s -X POST http://${location.host}/api/evolve -H 'content-type: application/json' -d '{"proposals":[{"type":"improve","title":"Title","desc":"Description"}]}' (type is improve|add|remove).\nHow notes, tasks and events relate: GET http://${location.host}/api/graph/schema (NodeRel graph) and /api/stats (graph.gaps).`;
-  post('/api/chat', { text: prompt, force: true }).then((r) => { if (!r.ok) r.json().then((e) => showErr(e.error || 'Analyze request failed')).catch(() => {}); else openChat(); })
-    .catch(() => showErr('Analyze request failed')).finally(() => { b.disabled = false; b.textContent = orig; });
+  const b = $('evoAnalyze'); b.disabled = true; const orig = b.textContent; b.textContent = '요청하는 중…';
+  const prompt = `[진화] 이 앱의 현재 기능, 담긴 데이터, 쓰이는 방식(사용 기록: GET http://${location.host}/api/activity, 그리고 최근 대화)을 살펴보고 앱이 어떻게 진화하면 좋을지 제안해 줘 — improve/add/remove 제안으로 등록해.\n등록: curl -s -X POST http://${location.host}/api/evolve -H 'content-type: application/json' -d '{"proposals":[{"type":"improve","title":"제목","desc":"설명"}]}' (type은 improve|add|remove).\n메모·할일·일정의 관계: GET http://${location.host}/api/graph/schema (NodeRel 그래프), /api/stats (graph.gaps).`;
+  post('/api/chat', { text: prompt, force: true }).then((r) => { if (!r.ok) r.json().then((e) => showErr(e.error || '분석을 요청하지 못했습니다')).catch(() => {}); else openChat(); })
+    .catch(() => showErr('분석을 요청하지 못했습니다')).finally(() => { b.disabled = false; b.textContent = orig; });
 };
 
 /* ---- 시스템 › Update ---- 업스트림과 비교한 항목을 다섯 상태로. Update는 에이전트에게 이식을 맡긴다 */
@@ -2099,62 +2173,62 @@ async function refreshUpdates() {
   try { updCache = await getJSON('/api/updates'); } catch { return; }
   renderUpdates();
 }
-const UPD_KIND = { missing: 'New', partial: 'Partly here', outdated: 'Newer module', runtime: 'Shared runtime' };
+const UPD_KIND = { missing: '새 기능', partial: '일부만 있음', outdated: '새 모듈', runtime: '공유 런타임' };
 function renderUpdates() {
   const B = bucketList(updCache.items || [], BUCKET_OF.upd), k = stFilter.upd;
   renderStSeg('upd', Object.fromEntries(ST_BUCKETS.map(([b]) => [b, B[b].length])));
   $('updBadge').textContent = B.wait.length; $('updBadge').classList.toggle('show', B.wait.length > 0); updateSysBadge();
   const lc = updCache.lastCheck;
-  $('updLast').innerHTML = !lc ? 'Not checked yet.' : `Checked <b>${escapeHtml(fmtWhen(lc.at))}</b> against <b>agent-native-agent @ ${escapeHtml(String(lc.commit || '').slice(0, 7))}</b> · ${lc.present}/${lc.total} features here${lc.runtime === 'differs' ? ' · shared runtime differs' : ''}${lc.added ? ` · <b>${lc.added} new</b>` : ''}${
-    (lc.changes || []).length ? `<details><summary>${lc.changes.length} upstream change${lc.changes.length === 1 ? '' : 's'} since the last sync</summary><ul>${lc.changes.slice(0, 30).map((c) => `<li>${escapeHtml(c)}</li>`).join('')}</ul></details>` : ''}`;
+  $('updLast').innerHTML = !lc ? '아직 확인하지 않았습니다.' : `<b>${escapeHtml(fmtWhen(lc.at))}</b>에 <b>agent-native-agent @ ${escapeHtml(String(lc.commit || '').slice(0, 7))}</b>와 비교 · 기능 ${lc.total}개 중 ${lc.present}개 있음${lc.runtime === 'differs' ? ' · 공유 런타임이 다름' : ''}${lc.added ? ` · <b>새 항목 ${lc.added}개</b>` : ''}${
+    (lc.changes || []).length ? `<details><summary>지난 동기화 이후 업스트림 변경 ${lc.changes.length}건</summary><ul>${lc.changes.slice(0, 30).map((c) => `<li>${escapeHtml(c)}</li>`).join('')}</ul></details>` : ''}`;
   const ACTS = {
-    wait: '<button class="talk">Discuss</button><button class="do">Update</button><button class="ignore">Cancel</button>',
-    doing: '<button class="talk">Discuss</button><button class="done">Mark done</button><button class="fail">Failed</button><button class="ignore">Cancel</button>',
-    done: '<button class="reopen">Reopen</button>',
-    fail: '<button class="talk">Discuss</button><button class="reopen">Try again</button>',
-    cancel: '<button class="reopen">Restore</button>',
+    wait: '<button class="talk">상의하기</button><button class="do">업데이트</button><button class="ignore">취소</button>',
+    doing: '<button class="talk">상의하기</button><button class="done">완료 처리</button><button class="fail">실패</button><button class="ignore">취소</button>',
+    done: '<button class="reopen">다시 열기</button>',
+    fail: '<button class="talk">상의하기</button><button class="reopen">다시 시도</button>',
+    cancel: '<button class="reopen">되살리기</button>',
   };
   $('updList').innerHTML = B[k].map((x) => `<div class="evo-card card upd-card ${escapeHtml(x.status)}" data-uid="${Number(x.id) || 0}"><div class="evo-top">
-      <span class="upd-kind ${escapeHtml(x.kind)}">${UPD_KIND[x.kind] || 'Update'}</span><span class="evo-t">${escapeHtml(x.title)}</span><span class="evo-when">#${Number(x.id) || 0}${k !== 'wait' && whenTxt(x) ? ' · ' + whenTxt(x) : ''}</span></div>
+      <span class="upd-kind ${escapeHtml(x.kind)}">${UPD_KIND[x.kind] || '업데이트'}</span><span class="evo-t">${escapeHtml(x.title)}</span><span class="evo-when">#${Number(x.id) || 0}${k !== 'wait' && whenTxt(x) ? ' · ' + whenTxt(x) : ''}</span></div>
       ${x.summary ? `<div class="evo-d">${escapeHtml(x.summary)}</div>` : ''}
-      ${(x.missing || []).length && x.kind === 'partial' ? `<div class="upd-miss">Missing here: ${x.missing.slice(0, 6).map((m) => `<code>${escapeHtml(m)}</code>`).join(' · ')}</div>` : ''}
+      ${(x.missing || []).length && x.kind === 'partial' ? `<div class="upd-miss">여기에 없는 것: ${x.missing.slice(0, 6).map((m) => `<code>${escapeHtml(m)}</code>`).join(' · ')}</div>` : ''}
       ${x.note ? `<div class="upd-miss">${escapeHtml(x.note)}</div>` : ''}
-      ${x.status === 'failed' ? `<div class="fail-why">✗ Failed${x.failReason ? ' — ' + escapeHtml(x.failReason) : ''}</div>` : ''}
+      ${x.status === 'failed' ? `<div class="fail-why">✗ 실패${x.failReason ? ' — ' + escapeHtml(x.failReason) : ''}</div>` : ''}
       <div class="evo-acts">${ACTS[k]}</div></div>`).join('');
   $('updEmpty').textContent = ST_EMPTY.upd[k]; $('updEmpty').style.display = B[k].length ? 'none' : 'block';
 }
 $('updCheck').onclick = async () => {
-  const b = $('updCheck'); b.disabled = true; const orig = b.textContent; b.textContent = 'Checking GitHub…';
+  const b = $('updCheck'); b.disabled = true; const orig = b.textContent; b.textContent = 'GitHub 확인 중…';
   try {
     const r = await post('/api/update/check', {}); const d = await r.json().catch(() => ({}));
-    if (!r.ok) showErr(d.error || 'Update check failed');
-    else { stFilter.upd = 'wait'; toast(d.lastCheck.added ? `${d.lastCheck.added} new update${d.lastCheck.added === 1 ? '' : 's'}` : 'No new updates'); }
-  } catch { showErr('Update check failed'); }
+    if (!r.ok) showErr(d.error || '업데이트를 확인하지 못했습니다');
+    else { stFilter.upd = 'wait'; toast(d.lastCheck.added ? `새 업데이트 ${d.lastCheck.added}개` : '새 업데이트가 없습니다'); }
+  } catch { showErr('업데이트를 확인하지 못했습니다'); }
   b.disabled = false; b.textContent = orig; refreshUpdates();
 };
 $('updList').addEventListener('click', async (e) => {
   const card = e.target.closest('.upd-card'), btn = e.target.closest('button'); if (!card || !btn) return;
   const id = Number(card.dataset.uid), it = (updCache.items || []).find((x) => x.id === id); if (!it) return;
-  if (btn.classList.contains('talk')) { addChip('Update', `#${id} ${it.title}`); openChat(); setTimeout(() => $('input').focus(), 60); return; }
+  if (btn.classList.contains('talk')) { addChip('업데이트', `#${id} ${it.title}`); openChat(); setTimeout(() => $('input').focus(), 60); return; }
   const action = ['do', 'done', 'fail', 'reopen', 'ignore'].find((a) => btn.classList.contains(a)); if (!action) return;
-  if (action === 'do' && it.kind === 'runtime' && !(await confirmAsk({ title: 'Update the shared runtime?', body: 'channel-core.js is shared by every ANA on this host. Replacing it changes all of them at once.', yes: 'Update' }))) return;
+  if (action === 'do' && it.kind === 'runtime' && !(await confirmAsk({ title: '공유 런타임을 업데이트할까요?', body: 'channel-core.js는 이 호스트의 모든 ANA가 함께 씁니다. 바꾸면 모두 한꺼번에 바뀝니다.', yes: '업데이트' }))) return;
   let r; try { r = await post('/api/update-act', { id, action }); } catch { r = null; }
-  if (!r || !r.ok) { showErr('Could not update this item'); return; }
+  if (!r || !r.ok) { showErr('이 항목을 처리하지 못했습니다'); return; }
   const d = await r.json().catch(() => ({}));
   refreshUpdates();
   if (action === 'do') {
     const h = location.host, up = d.upstreamDir || updCache.upstreamDir;
-    const text = `[Update] Bring "${it.title}" (${it.key}) from the latest agent-native-agent into this ANA.
-Upstream checkout: ${up} @ ${String(it.upstreamCommit || '').slice(0, 7)} — follow ${up}/skills/${it.skill}/SKILL.md (Porting) and the rules in ${up}/skills/ana-update/SKILL.md: port into this ANA's own files, keep its domain code${it.kind === 'runtime' ? '; this item IS the shared runtime — replace channel-core.js whole, never patch it' : ', never patch channel-core.js'}.
-${(it.missing || []).length ? `Missing here: ${it.missing.join(', ')}.\n` : ''}${(it.modules || []).length ? `Modules: ${it.modules.join(', ')}.\n` : ''}${(it.npm || []).length ? `npm: ${it.npm.join(', ')}.\n` : ''}Verify with the tests and a look at the page. Then report: curl -s -X POST http://${h}/api/update-act -H 'content-type: application/json' -d '{"id":${id},"action":"done"}' — or if it can't be done: -d '{"id":${id},"action":"fail","reason":"why"}'.`;
+    const text = `[업데이트] 최신 agent-native-agent의 "${it.title}" (${it.key})을(를) 이 ANA로 가져와 줘.
+업스트림 체크아웃: ${up} @ ${String(it.upstreamCommit || '').slice(0, 7)} — ${up}/skills/${it.skill}/SKILL.md(Porting)와 ${up}/skills/ana-update/SKILL.md의 규칙을 따라: 이 ANA 자신의 파일로 옮기고 도메인 코드는 유지해${it.kind === 'runtime' ? '. 이 항목이 바로 공유 런타임이다 — channel-core.js는 파일 통째로 바꾸고 절대 부분 수정하지 마' : '. channel-core.js는 절대 부분 수정하지 마'}.
+${(it.missing || []).length ? `여기에 없는 것: ${it.missing.join(', ')}.\n` : ''}${(it.modules || []).length ? `모듈: ${it.modules.join(', ')}.\n` : ''}${(it.npm || []).length ? `npm: ${it.npm.join(', ')}.\n` : ''}테스트와 화면 확인으로 검증한 뒤 보고해 줘: curl -s -X POST http://${h}/api/update-act -H 'content-type: application/json' -d '{"id":${id},"action":"done"}' — 할 수 없으면: -d '{"id":${id},"action":"fail","reason":"이유"}'.`;
     openChat();
-    post('/api/chat', { text, force: true }).then((x) => { if (!x.ok) x.json().then((e) => showErr(e.error || 'Could not send it to the agent')).catch(() => {}); }).catch(() => showErr('Could not send it to the agent'));
+    post('/api/chat', { text, force: true }).then((x) => { if (!x.ok) x.json().then((e) => showErr(e.error || '에이전트에게 보내지 못했습니다')).catch(() => {}); }).catch(() => showErr('에이전트에게 보내지 못했습니다'));
   }
 });
 
 /* ---- 삭제 확인 팝업 ----
    되돌릴 수 없는 삭제 앞에 한 번 세운다. 다른 모달 위에서도 뜨도록 별도 z-index를 쓴다. */
-function confirmDelete(what) { return confirmAsk({ title: 'Delete?', body: `${what} — this cannot be undone.`, yes: 'Delete' }); }
+function confirmDelete(what) { return confirmAsk({ title: '삭제할까요?', body: `${what} — 되돌릴 수 없습니다.`, yes: '삭제' }); }
 // 같은 확인 창을 다른 위험한 일에도 쓴다(권한 모드를 '묻지 않음'으로 바꿀 때 등)
 function confirmAsk({ title, body, yes }) {
   return new Promise((resolve) => {
@@ -2179,7 +2253,7 @@ function confirmAsk({ title, body, yes }) {
 }
 
 /* ---- 공용 ---- */
-const fmtWhen = (iso) => { try { return new Date(iso).toLocaleString('en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
+const fmtWhen = (iso) => { try { return new Date(iso).toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch { return ''; } };
 let toastT = null;
 function toast(msg) {
   $('toast').textContent = msg; $('toast').classList.add('on');
@@ -2237,17 +2311,17 @@ async function loadMe() {
   if (me.email) userMap[me.email] = me;
   $('meBtn').innerHTML = avatarHtml(me.email);
   $('meBtn').title = signedIn ? `${me.name} · ${me.email}`
-    : (meVia === 'missing' ? 'Identity header missing from the request — check the front proxy' : 'Single-user mode');
+    : (meVia === 'missing' ? '요청에 신원 헤더가 없습니다 — 앞단 프록시를 확인하세요' : '단일 사용자 모드');
   $('meLogout').style.display = logoutUrl ? '' : 'none';   // 로그아웃 경로는 앞단이 정한다
   // 프로필 메뉴의 로그아웃: 앞단 로그아웃 경로가 있을 때만 활성. 없으면 이유를 보여 주고 비활성.
   $('menuLogout').disabled = !logoutUrl;
   $('menuLogoutHint').hidden = !!logoutUrl;
-  $('menuLogoutHint').textContent = signedIn ? 'Set ANA_LOGOUT_URL to enable' : 'Single-user mode — no sign-in';
+  $('menuLogoutHint').textContent = signedIn ? 'ANA_LOGOUT_URL을 설정하면 켜집니다' : '단일 사용자 모드 — 로그인 없음';
   renderTodos(); renderMemos(); renderUpcoming();
 }
 /* 아바타 클릭 → 드롭다운 메뉴(Edit My Info / Settings) */
 function openMyInfo() {
-  $('meMail').textContent = signedIn ? me.email : 'Local profile — single-user mode';
+  $('meMail').textContent = signedIn ? me.email : '로컬 프로필 — 단일 사용자 모드';
   $('meName').value = me.name || '';
   $('mePic').innerHTML = avatarHtml(me.email, 'lg');
   openModal('meModal');
@@ -2270,14 +2344,14 @@ $('menuSettings').onclick = () => { $('meMenu').hidden = true; renderSettings();
 
 /* 설정 — 강조색. 'auto'는 계절 팔레트, 그 외에는 data-accent가 계절 규칙을 덮는다. */
 const ACCENTS = [
-  ['auto', 'Auto', ''],
-  ['blue', 'Blue', '#3182F6'], ['pink', 'Pink', '#F2789F'], ['teal', 'Teal', '#0FA3C0'],
-  ['orange', 'Orange', '#E8731C'], ['purple', 'Purple', '#7C5CFC'], ['green', 'Green', '#16A26B'],
+  ['auto', '자동', ''],
+  ['blue', '파랑', '#3182F6'], ['pink', '분홍', '#F2789F'], ['teal', '청록', '#0FA3C0'],
+  ['orange', '주황', '#E8731C'], ['purple', '보라', '#7C5CFC'], ['green', '초록', '#16A26B'],
 ];
 const THEMES = [
-  ['auto', 'Auto', 'linear-gradient(90deg, #FFFFFF 50%, #17181C 50%)'],
-  ['light', 'Light', '#FFFFFF'],
-  ['dark', 'Dark', '#17181C'],
+  ['auto', '자동', 'linear-gradient(90deg, #FFFFFF 50%, #17181C 50%)'],
+  ['light', '라이트', '#FFFFFF'],
+  ['dark', '다크', '#17181C'],
 ];
 function currentAccent() { try { return localStorage.getItem('ana-accent') || 'auto'; } catch { return 'auto'; } }
 function currentTheme() { try { return localStorage.getItem('ana-theme') || 'auto'; } catch { return 'auto'; } }
@@ -2308,20 +2382,20 @@ $('mePic').onclick = () => $('meFile').click();
 $('meFile').addEventListener('change', async () => {
   const f = ($('meFile').files || [])[0]; $('meFile').value = '';
   if (!f) return;
-  if (f.size > MAX_UPLOAD) { showErr('The photo is over the 10MB limit'); return; }
+  if (f.size > MAX_UPLOAD) { showErr('사진이 10MB 제한을 넘습니다'); return; }
   try {
     const th = await makeThumb(f) || f;                       // 아바타는 축소본이면 충분하다
     const name = await uploadThumb(th, f.name || 'avatar.jpg');
     const r = await post('/api/me', { avatar: name });
-    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || 'Save failed');
+    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || '저장하지 못했습니다');
     me = { ...me, avatar: name }; userMap[me.email] = me;
     await loadMe();
     $('mePic').innerHTML = avatarHtml(me.email, 'lg');
-  } catch (e) { showErr(`Profile photo failed — ${e.message}`); }
+  } catch (e) { showErr(`프로필 사진을 바꾸지 못했습니다 — ${e.message}`); }
 });
 $('meSave').onclick = async () => {
   const r = await post('/api/me', { name: $('meName').value.trim() });
-  if (!r.ok) { showErr((await r.json().catch(() => ({}))).error || 'Save failed'); return; }
+  if (!r.ok) { showErr((await r.json().catch(() => ({}))).error || '저장하지 못했습니다'); return; }
   closeModal(); await loadMe();
 };
 // 로그아웃은 앞단 게이트웨이의 몫 — ANA_LOGOUT_URL이 설정된 배포에서만 버튼이 보인다.
@@ -2339,61 +2413,63 @@ async function renderStats() {
   try {
     d = await (await getJSON('/api/stats'));
     act = await (await getJSON(`/api/activity${statSeg === 'mine' ? '?mine=1' : ''}`));
-  } catch { $('statBody').innerHTML = '<div class="empty">Failed to load stats</div>'; return; }
+  } catch { $('statBody').innerHTML = '<div class="empty">통계를 불러오지 못했습니다</div>'; return; }
   const tile = (n, l) => `<div class="stat card"><div class="n">${n}</div><div class="l">${l}</div></div>`;
   if (statSeg === 'mine') {
     const m = d.mine;
     $('statBody').innerHTML = !m
-      ? '<div class="empty">No account info — personal stats unavailable</div>'
-      : `<div class="stat-grid">${tile(m.total || 0, 'Total activity')}${tile(m.today || 0, 'Today')}${
-          tile(m.todos || 0, 'My tasks')}${tile(m.events || 0, 'My events')}${tile(m.notes || 0, 'My notes')}${
-          tile((m.actions && m.actions['chat.send']) || 0, 'My chats')}</div>`;
+      ? '<div class="empty">계정 정보가 없어 개인 통계를 볼 수 없습니다</div>'
+      : `<div class="stat-grid">${tile(m.total || 0, '전체 활동')}${tile(m.today || 0, '오늘')}${
+          tile(m.todos || 0, '내 할일')}${tile(m.events || 0, '내 일정')}${tile(m.notes || 0, '내 메모')}${
+          tile((m.actions && m.actions['chat.send']) || 0, '내 채팅')}</div>`;
   } else {
     const a = d.all, max = Math.max(1, ...a.days.map((x) => x.count));
     $('statBody').innerHTML = `
-      <div class="stat-grid">${tile(a.total, 'Total activity')}${tile(a.people.length, 'People')}${
-        tile(a.todos, 'Tasks')}${tile(a.events, 'Events')}${tile(a.notes, 'Notes')}${tile(a.actions['chat.send'] || 0, 'Chats')}</div>
-      <div class="card spark" title="Last 14 days">${a.days.map((x) =>
+      <div class="stat-grid">${tile(a.total, '전체 활동')}${tile(a.people.length, '사람')}${
+        tile(a.todos, '할일')}${tile(a.events, '일정')}${tile(a.notes, '메모')}${tile(a.actions['chat.send'] || 0, '채팅')}</div>
+      <div class="card spark" title="최근 14일">${a.days.map((x) =>
         `<i class="${x.count === max && max > 0 ? 'hi' : ''}" style="height:${Math.round((x.count / max) * 100)}%" title="${x.date} · ${x.count}"></i>`).join('')}</div>
       <div class="people">${a.people.map((pp) => `
         <div class="person card">${avatarHtml(pp.by)}<span class="pn">${escapeHtml(pp.name)}</span>
           <span class="bar"><span style="width:${Math.round((pp.total / Math.max(1, a.people[0].total)) * 100)}%"></span></span>
           <span class="pc">${pp.total}</span></div>`).join('')}</div>`;
   }
-  const ACT_KO = { 'todo.add': 'task added', 'todo.remove': 'task deleted', 'todo.done': 'task done', 'todo.undone': 'task reopened',
-    'note.add': 'note added', 'note.remove': 'note deleted', 'event.add': 'event added', 'event.remove': 'event deleted',
-    'link.add': 'linked', 'link.remove': 'unlinked', 'chat.send': 'chat', 'profile.update': 'profile' };
+  const ACT_KO = { 'todo.add': '할일 추가', 'todo.remove': '할일 삭제', 'todo.done': '할일 완료', 'todo.undone': '할일 다시 열기',
+    'note.add': '메모 추가', 'note.remove': '메모 삭제', 'event.add': '일정 추가', 'event.remove': '일정 삭제',
+    'link.add': '연결', 'link.remove': '연결 해제', 'chat.send': '채팅', 'profile.update': '프로필',
+    'workspace.add': '워크스페이스 추가', 'workspace.rename': '워크스페이스 이름 변경', 'workspace.remove': '워크스페이스 삭제',
+    'agent.permission': '권한 모드 변경', 'update.check': '업데이트 확인' };
   $('actList').innerHTML = (act.activity || []).slice(0, 60).map((a) => `
     <div class="act-row card">${avatarHtml(a.by, 'sm')}<span class="aa">${escapeHtml(ACT_KO[a.action] || a.action)}</span>
       <span class="at2">${escapeHtml(a.target || '')}</span><span class="aw">${escapeHtml(fmtWhen(a.at))}</span></div>`).join('')
-    || '<div class="empty">No activity yet</div>';
+    || '<div class="empty">아직 활동이 없습니다</div>';
 }
 
 /* ---- 관계(Relations) ----
    메모 → 할일 → 일정 → 날짜를 네 칸으로 늘어놓고 NodeRel 관계를 선으로 잇는다. 항목을 누르면 그 항목으로 간다. */
 const REL_INFO = [
-  ['SPAWNED', 'Note', 'Task · Event', 'Where a task or event came from', true],
-  ['SCHEDULED_AS', 'Task', 'Event', 'Time blocked to work on the task', true],
-  ['REFERS_TO', 'Note · Task · Event', 'Note · Task · Event', 'Manual reference between two items', true],
-  ['DUE_ON', 'Task', 'Day', 'The task is due that day (from its due date)', false],
-  ['ON', 'Event', 'Day', 'The event happens that day (from its date)', false],
+  ['SPAWNED', '메모', '할일 · 일정', '할일이나 일정이 나온 곳', true],
+  ['SCHEDULED_AS', '할일', '일정', '그 할일을 하기로 잡아 둔 시간', true],
+  ['REFERS_TO', '메모 · 할일 · 일정', '메모 · 할일 · 일정', '두 항목 사이의 수동 참조', true],
+  ['DUE_ON', '할일', '날짜', '그날이 할일의 마감(마감일에서 파생)', false],
+  ['ON', '일정', '날짜', '그날 일정이 있음(날짜에서 파생)', false],
 ];
 async function renderRelations() {
   $('relWs').textContent = (workspaces.find((w) => w.id === currentWs) || {}).name || '';
-  let d; try { d = await (await getJSON('/api/stats')); } catch { $('relGraph').innerHTML = '<div class="empty">Failed to load</div>'; return; }
+  let d; try { d = await (await getJSON('/api/stats')); } catch { $('relGraph').innerHTML = '<div class="empty">불러오지 못했습니다</div>'; return; }
   renderRelStats(d.graph);
   const cnt = (t) => ((d.graph && d.graph.types) || []).find((x) => x.type === t)?.count || 0;
-  $('relVocab').innerHTML = `<table><thead><tr><th>Relation</th><th>From → To</th><th>Meaning</th><th>Count</th></tr></thead><tbody>${
-    REL_INFO.map(([t, f, to, m, ed]) => `<tr><td><code>${t}</code>${ed ? '' : ' <span class="auto">auto</span>'}</td><td>${f} → ${to}</td><td>${m}</td><td>${cnt(t)}</td></tr>`).join('')}</tbody></table>`;
+  $('relVocab').innerHTML = `<table><thead><tr><th>관계</th><th>시작 → 끝</th><th>의미</th><th>개수</th></tr></thead><tbody>${
+    REL_INFO.map(([t, f, to, m, ed]) => `<tr><td><code>${t}</code>${ed ? '' : ' <span class="auto">자동</span>'}</td><td>${f} → ${to}</td><td>${m}</td><td>${cnt(t)}</td></tr>`).join('')}</tbody></table>`;
   drawRelGraph();
 }
 function drawRelGraph() {
   const days = [...new Set(graphLinks.filter((l) => l.type === 'DUE_ON' || l.type === 'ON').map((l) => l.to))].sort();
   const cols = [
-    ['Notes', notes.map((n) => ({ id: n.id, kind: 'Note', title: noteTitle(n) }))],
-    ['Tasks', items.map((t) => ({ id: t.id, kind: 'Task', title: t.title || t.text || '', done: t.done }))],
-    ['Events', events.map((e) => ({ id: e.id, kind: 'Event', title: `${mdDate(e.date)} ${e.title}`, done: e.done }))],
-    ['Days', days.map((dd) => ({ id: dd, kind: 'Day', title: mdDate(dd.slice(4)) }))],
+    ['메모', notes.map((n) => ({ id: n.id, kind: 'Note', title: noteTitle(n) }))],
+    ['할일', items.map((t) => ({ id: t.id, kind: 'Task', title: t.title || t.text || '', done: t.done }))],
+    ['일정', events.map((e) => ({ id: e.id, kind: 'Event', title: `${mdDate(e.date)} ${e.title}`, done: e.done }))],
+    ['날짜', days.map((dd) => ({ id: dd, kind: 'Day', title: mdDate(dd.slice(4)) }))],
   ];
   const W = Math.max(560, $('relGraph').clientWidth - 24), gap = 26, nw = (W - gap * 3) / 4, nh = 28, vg = 8, top = 26;
   const pos = new Map();
@@ -2410,8 +2486,8 @@ function drawRelGraph() {
   const heads = cols.map(([h], c) => `<text class="colh" x="${c * (nw + gap) + 2}" y="14">${h.toUpperCase()} · ${cols[c][1].length}</text>`).join('');
   const nodes = [...pos.values()].map(({ x, y, n }) => `<g class="node k-${n.kind}${n.done ? ' done' : ''}" data-id="${escapeHtml(n.id)}" tabindex="0" role="button"><title>${escapeHtml(n.title)}</title>
     <rect x="${x}" y="${y}" width="${nw}" height="${nh}" rx="8"/><text x="${x + 9}" y="${y + nh / 2 + 4}">${escapeHtml(clip(n.title))}</text></g>`).join('');
-  $('relGraph').innerHTML = `<div class="rel-legend"><span><i style="border-color:var(--warm-fg)"></i>SPAWNED</span><span><i style="border-color:var(--success)"></i>SCHEDULED_AS</span><span><i style="border-color:var(--text-weak);border-top-style:dashed"></i>REFERS_TO</span><span><i style="border-color:var(--line)"></i>due / on day</span></div>
-    <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Relation graph of notes, tasks, events and days">${edges}${heads}${nodes}</svg>`;
+  $('relGraph').innerHTML = `<div class="rel-legend"><span><i style="border-color:var(--warm-fg)"></i>SPAWNED</span><span><i style="border-color:var(--success)"></i>SCHEDULED_AS</span><span><i style="border-color:var(--text-weak);border-top-style:dashed"></i>REFERS_TO</span><span><i style="border-color:var(--line)"></i>마감 / 그날 일정</span></div>
+    <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="메모·할일·일정·날짜의 관계 그래프">${edges}${heads}${nodes}</svg>`;
   // 항목에 올리면 이어진 것만 밝게, 누르면 그 항목으로 이동
   const box = $('relGraph');
   const hl = (id) => { box.classList.toggle('dim', !!id); box.querySelectorAll('.hl').forEach((x) => x.classList.remove('hl')); if (!id) return;
@@ -2426,24 +2502,24 @@ function drawRelGraph() {
 
 // 연결 — 관계 종류별 개수와, 메모→할일→일정 흐름이 끊긴 곳(NodeRel orphans)
 function renderRelStats(g) {
-  if (!g || g.error) { $('relStats').innerHTML = `<div class="empty">Graph unavailable${g && g.error ? ' — ' + escapeHtml(g.error) : ''}</div>`; return; }
+  if (!g || g.error) { $('relStats').innerHTML = `<div class="empty">그래프를 볼 수 없습니다${g && g.error ? ' — ' + escapeHtml(g.error) : ''}</div>`; return; }
   const tile = (n, l) => `<div class="stat card"><div class="n">${n}</div><div class="l">${l}</div></div>`;
   const cnt = (t) => (g.types.find((x) => x.type === t) || {}).count || 0;
   const chipsFor = (list) => list.length ? `<div class="rels">${list.slice(0, 30).map((x) => { const n = nodeOf(x.id);
     return n ? `<span class="rel k-${n.kind}" role="button" tabindex="0" data-go="${escapeHtml(n.id)}"><span class="rt">${escapeHtml(n.label)}</span></span>` : ''; }).join('')}</div>` : '';
   const gap = (title, desc, list) => `<div class="gap-sec card"><h3>${title}<span class="gn ${list.length ? '' : 'ok'}">${list.length || '✓'}</span></h3>
     <div class="gd">${desc}</div>${chipsFor(list)}</div>`;
-  $('relStats').innerHTML = `<div class="stat-grid">${tile(cnt('SPAWNED'), 'Note → task/event')}${tile(cnt('SCHEDULED_AS'), 'Task → scheduled')}${
-    tile(cnt('REFERS_TO'), 'References')}</div>
-    ${gap('Notes not acted on', 'No task or event was made from these notes yet', g.gaps.notesUnused)}
-    ${gap('Open tasks without a due date', 'They never show up on the calendar', g.gaps.tasksNoDue)}
-    ${gap('Open tasks with no time scheduled', 'Use the calendar button on a task to block time for it', g.gaps.tasksUnscheduled)}`;
+  $('relStats').innerHTML = `<div class="stat-grid">${tile(cnt('SPAWNED'), '메모 → 할일/일정')}${tile(cnt('SCHEDULED_AS'), '할일 → 시간 잡음')}${
+    tile(cnt('REFERS_TO'), '참조')}</div>
+    ${gap('손대지 않은 메모', '아직 이 메모에서 나온 할일이나 일정이 없습니다', g.gaps.notesUnused)}
+    ${gap('마감일 없는 할일', '달력에 전혀 나타나지 않습니다', g.gaps.tasksNoDue)}
+    ${gap('시간이 안 잡힌 할일', '할일의 달력 버튼으로 할 시간을 잡으세요', g.gaps.tasksUnscheduled)}`;
 }
 
 /* ================= 탭 전환 ================= */
 // 영역(Workspace / System)마다 마지막으로 본 탭을 기억한다
 let appMode = 'ws';
-const lastTab = { ws: 'todo', collab: 'evolve', sys: 'stats' };
+const lastTab = { ws: 'arms', collab: 'evolve', sys: 'stats' };
 const AREAS = ['ws', 'collab', 'sys'];
 try { const m = localStorage.getItem('ana-area'); if (AREAS.includes(m)) appMode = m; const t = JSON.parse(localStorage.getItem('ana-area-tabs') || '{}'); Object.assign(lastTab, t); } catch {}
 // 탭 선택은 click()이 아니라 이 함수로 — 클릭 처리 중인 버튼에 다시 click()을 부르면 브라우저가 무시한다
@@ -2451,7 +2527,7 @@ function selectTab(b) {
     if (b.dataset.group && b.dataset.group !== appMode) applyArea(b.dataset.group);
     if ($('memoView').classList.contains('on') && b.dataset.view !== 'memo') cleanupEmptyMemos(); // 메모 탭 이탈 시 빈 메모 정리(진화 #3)
     document.querySelectorAll('.topnav .tab').forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-selected', String(on)); });
-    ['todo', 'schedule', 'memo', 'evolve', 'approvals', 'requests', 'stats', 'relations', 'reliability', 'safety', 'security', 'update'].forEach((v) => $(v + 'View').classList.toggle('on', b.dataset.view === v));
+    ['todo', 'schedule', 'memo', 'evolve', 'approvals', 'requests', 'stats', 'relations', 'reliability', 'safety', 'security', 'update', 'arms'].forEach((v) => $(v + 'View').classList.toggle('on', b.dataset.view === v));
     lastTab[appMode] = b.dataset.view;
     revealTab(b);
     try { localStorage.setItem('ana-area-tabs', JSON.stringify(lastTab)); } catch {}
@@ -2461,6 +2537,7 @@ function selectTab(b) {
     if (b.dataset.view === 'update') refreshUpdates();
     if (b.dataset.view === 'stats') renderStats();
     if (b.dataset.view === 'relations') renderRelations();
+    if (b.dataset.view === 'arms') refreshArms();
 }
 document.querySelectorAll('.topnav .tab').forEach((b) => { b.onclick = () => selectTab(b); });
 // 고른 탭이 가려져 있으면 보이게 밀고, 양옆에 더 있는지 가장자리 흐림으로 알린다
@@ -2515,7 +2592,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalCur
 let tFromId = '', eFromId = '';
 function setFrom(el, id) {
   const n = id ? nodeOf(id) : null;
-  el.hidden = !n; el.textContent = n ? `${n.kind === 'Note' ? 'From note' : 'For task'}: ${n.title}` : '';
+  el.hidden = !n; el.textContent = n ? `${n.kind === 'Note' ? '출처 메모' : '대상 할일'}: ${n.title}` : '';
 }
 function openTodoFrom(fromId, title) {
   tFromId = fromId || ''; setFrom($('tFrom'), tFromId);
@@ -2534,14 +2611,14 @@ $('tSave').onclick = async () => {
   const title = $('tTitle').value.trim(); if (!title) { $('tTitle').focus(); return; }
   const body = { title }; if ($('tDue').value) body.due = $('tDue').value; if (tFromId) body.from = tFromId;
   const r = await post('/api/todo', body);
-  if (r.ok) { closeModal(); refreshData(); } else { const e = await r.json().catch(() => ({})); showErr(e.error || 'Failed to add the task'); }
+  if (r.ok) { closeModal(); refreshData(); } else { const e = await r.json().catch(() => ({})); showErr(e.error || '할일을 추가하지 못했습니다'); }
 };
 $('eSave').onclick = async () => {
   const title = $('eTitle').value.trim(); const date = $('eDate').value;
   if (!title) { $('eTitle').focus(); return; } if (!date) { $('eDate').focus(); return; }
   const body = { action: 'add', title, date }; if ($('eTime').value) body.time = $('eTime').value; if (eFromId) body.from = eFromId;
   const r = await post('/api/event', body);
-  if (r.ok) { closeModal(); selDate = date; const d = date.split('-'); calY = +d[0]; calM = +d[1] - 1; refreshData(); } else { const e = await r.json().catch(() => ({})); showErr(e.error || 'Failed to add the event'); }
+  if (r.ok) { closeModal(); selDate = date; const d = date.split('-'); calY = +d[0]; calM = +d[1] - 1; refreshData(); } else { const e = await r.json().catch(() => ({})); showErr(e.error || '일정을 추가하지 못했습니다'); }
 };
 
 /* ---- 참조 연결 모달 (REFERS_TO) ---- */
@@ -2553,15 +2630,15 @@ function renderLinkList() {
     .filter((id) => id !== linkSrc && !linked.has(id)).map(nodeOf).filter(Boolean)
     .filter((n) => !q || n.label.toLowerCase().includes(q)).slice(0, 60);
   $('lkList').innerHTML = all.map((n) => `<button class="lk-item k-${n.kind}" role="option" data-to="${escapeHtml(n.id)}">
-    <span class="rk">${n.kind}</span><span class="lt">${escapeHtml(n.label)}</span></button>`).join('')
-    || '<div class="empty" style="padding:18px 0">Nothing to link</div>';
+    <span class="rk">${KIND_KO[n.kind]}</span><span class="lt">${escapeHtml(n.label)}</span></button>`).join('')
+    || '<div class="empty" style="padding:18px 0">연결할 항목이 없습니다</div>';
 }
 function openLinkModal(src) { linkSrc = src; $('lkQ').value = ''; renderLinkList(); openModal('linkModal'); }
 $('lkQ').addEventListener('input', renderLinkList);
 $('lkList').addEventListener('click', async (e) => {
   const b = e.target.closest('[data-to]'); if (!b) return;
   const r = await post('/api/link', { action: 'add', from: linkSrc, to: b.dataset.to, type: 'REFERS_TO' });
-  if (r.ok) { closeModal(); refreshData(); } else showErr((await r.json().catch(() => ({}))).error || 'Failed to link');
+  if (r.ok) { closeModal(); refreshData(); } else showErr((await r.json().catch(() => ({}))).error || '연결하지 못했습니다');
 });
 
 /* ================= 채팅 접기/펼치기 + 폭 조절 ================= */
@@ -3359,6 +3436,7 @@ function connect() {
       case 'evolve': if ($('evolveView').classList.contains('on')) refreshEvolve(); else refreshEvolve(); break;
       case 'requests': refreshRequests(); break;
       case 'updates': refreshUpdates(); break;
+      case 'arms': refreshArms(); break;
     }
   };
   stream.onerror = () => {
@@ -3412,7 +3490,7 @@ async function switchWorkspace(id) {
   currentWs = id; memoSel = null; renderWorkspaces(); closeWsMenu();
   // 서버 active도 옮긴다 — 헤더 없이 호출하는 에이전트(curl)가 같은 워크스페이스를 보도록.
   post('/api/workspaces', { action: 'select', id }).catch(() => {});
-  await refreshData();
+  await refreshData(); refreshArms();   // 무기·탄약 대장도 워크스페이스마다 따로
   if ($('statsView') && $('statsView').classList.contains('on')) renderStats();
 }
 $('wsBtn').onclick = (e) => {
@@ -3506,11 +3584,300 @@ $('wsNewName').addEventListener('keydown', (e) => { if (e.key === 'Escape') clos
 document.addEventListener('click', (e) => { if (!$('wsMenu').hidden && !e.target.closest('#wsCombo')) closeWsMenu(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('wsMenu').hidden) closeWsMenu(); });
 
+/* ================= 무기·탄약 (정보화장비계) =================
+   arms-api.js의 상태(/api/arms)를 아홉 탭으로 그린다. 모든 쓰기는 POST /api/arms {action, …} 하나로 간다.
+   폼은 data-arms="동작" 속성으로 구분하고, 입력값은 name 속성으로 읽는다. */
+// 세부 카테고리 — [화면 id, 이름]. 고른 것은 브라우저에 기억한다
+const ARMS_SUBS = [['armsStatus', '현황'], ['armsLoan', '대여·반납'], ['armsAmmo', '탄약 수불'], ['armsInspect', '점검·정비'], ['armsTraining', '사격·훈련'], ['armsAdmin', '시스템 관리']];
+let armsSub = 'armsStatus';
+try { const v = localStorage.getItem('ana-arms-sub'); if (ARMS_SUBS.some(([k]) => k === v)) armsSub = v; } catch {}
+function renderArmsNav() {
+  const risk = A ? A.summary.alerts.filter((x) => x.level === 'risk').length : 0;
+  $('armsNav').innerHTML = ARMS_SUBS.map(([k, l]) => `<button role="tab" data-arms-sub="${k}" aria-selected="${k === armsSub}" class="${k === armsSub ? 'on' : ''}">${l}${k === 'armsStatus' && risk ? `<span class="n">${risk}</span>` : ''}</button>`).join('');
+  ARMS_SUBS.forEach(([k]) => { $(k).hidden = k !== armsSub; });
+}
+function selectArmsSub(k) {
+  armsSub = k; try { localStorage.setItem('ana-arms-sub', k); } catch {}
+  renderArmsNav(); $('armsView').scrollTo({ top: 0 });
+  $('armsNav').querySelector('.on')?.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+}
+let armsClear = '';   // 방금 성공한 폼 — 다시 그릴 때 입력값을 되살리지 않는다
+let A = null, armsEdit = null, armsLedgerAmmo = '';   // armsEdit: 수정 중인 등록 정보 {col, rec}
+const W_ST = { stored: '보관', loaned: '대여 중', repair: '수리 중', disposed: '불용' };
+const TX_KO = { in: '입고', issue: '지급', return: '회수', train: '훈련 소모', use: '사용', dispose: '폐기', adjust: '조정' };
+const ROLE_KO = { admin: '관리자', officer: '담당자', duty: '당직자', staff: '일반' };
+const INSP_KO = { daily: '일일', weekly: '주간', regular: '정기', special: '특별', repair: '수리 완료' };
+const INSP_CHECKS = ['수량 일치', '잠금장치', '총기 상태', '탄약 상태', '출입 기록 확인', '열쇠 보관'];
+const ROLE_RANK = { admin: 3, officer: 2, duty: 1, staff: 0 };
+// 등록 정보 입력 칸 — [필드, 이름, 종류(text|date|num|armory|dept|check|list:<datalist id>), 표에 보일지]
+const ARMS_FIELDS = {
+  weapons: { label: '무기', f: [['type', '종류', 'list:dlWType', 1], ['model', '모델', 'text', 1], ['serial', '총번', 'text', 1], ['armoryId', '보관 무기고', 'armory', 1], ['deptId', '배정 부서', 'dept', 1], ['acquiredAt', '취득일', 'date', 0], ['note', '비고', 'text', 0]] },
+  ammo: { label: '탄약', f: [['type', '종류', 'list:dlAType', 1], ['caliber', '구경', 'text', 1], ['lot', '로트 번호', 'text', 1], ['expires', '유효기간', 'date', 1], ['unit', '단위', 'text', 0], ['min', '최소 재고', 'num', 1], ['armoryId', '보관 무기고', 'armory', 0], ['note', '비고', 'text', 0]] },
+  armories: { label: '무기고', f: [['name', '이름', 'text', 1], ['kind', '구분', 'list:dlArmKind', 1], ['location', '위치', 'text', 1], ['note', '비고', 'text', 0]] },
+  depts: { label: '부서', f: [['name', '이름', 'text', 1], ['note', '비고', 'text', 1]] },
+  people: { label: '인원', f: [['name', '이름', 'text', 1], ['rank', '계급', 'text', 1], ['deptId', '부서', 'dept', 1], ['email', '로그인 ID(이메일)', 'text', 0], ['carrier', '무기 휴대 허가', 'check', 1], ['note', '비고', 'text', 0]] },
+};
+const esc = escapeHtml;
+const aName = (list, id) => esc(((A && A[list] || []).find((x) => x.id === id) || {}).name || '');
+const wLabel = (id) => { const w = (A.weapons.find((x) => x.id === id) || {}); return esc(`${w.type || ''} ${w.serial || ''}`.trim()); };
+const ammoLabel = (a) => `${a.type}${a.caliber ? ' ' + a.caliber : ''}${a.lot ? ' · ' + a.lot : ''}`;
+const aLabel = (id) => { const a = A.ammo.find((x) => x.id === id); return a ? esc(ammoLabel(a)) : ''; };
+const dt = (iso) => (iso ? esc(fmtWhen(iso)) : '');
+const canDo = (role) => A && ROLE_RANK[A.myRole] >= ROLE_RANK[role];
+function aTable(head, rows, empty) {
+  if (!rows.length) return `<div class="empty arms-empty">${esc(empty || '기록이 없습니다')}</div>`;
+  return `<div class="card arms-tbl"><table><thead><tr>${head.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+const opt = (v, l, sel) => `<option value="${esc(v)}"${sel ? ' selected' : ''}>${esc(l)}</option>`;
+const armorySel = (name, cur, blank) => `<select name="${name}">${blank ? opt('', blank) : ''}${A.armories.map((r) => opt(r.id, r.name, r.id === cur)).join('')}</select>`;
+const deptSel = (name, cur) => `<select name="${name}">${opt('', '(없음)')}${A.depts.map((d) => opt(d.id, d.name, d.id === cur)).join('')}</select>`;
+const ammoSel = (name, blank) => `<select name="${name}">${blank ? opt('', blank) : ''}${A.ammo.map((a) => opt(a.id, `${ammoLabel(a)} (재고 ${A.summary.stock[a.id]})`)).join('')}</select>`;
+const fld = (label, inner, wide) => `<label class="af${wide ? ' wide' : ''}"><span>${esc(label)}</span>${inner}</label>`;
+const head = (title, sub) => `<div class="sec-head"><h2>${esc(title)}</h2>${sub ? `<span class="cnt">${sub}</span>` : ''}<span class="sp"></span></div>`;
+const roleNote = (role) => (canDo(role) ? '' : `<div class="arms-note">이 작업은 ${ROLE_KO[role]} 이상만 할 수 있습니다(내 권한: ${ROLE_KO[A.myRole]}).</div>`);
+
+async function refreshArms() {
+  try { A = await getJSON('/api/arms'); } catch { return; }
+  if (!A || A.error) return;
+  const risk = A.summary.alerts.filter((x) => x.level === 'risk').length;
+  $('armsBadge').textContent = risk; $('armsBadge').classList.toggle('show', risk > 0); updateSysBadge();
+  renderArms();
+}
+function renderArms() {
+  renderArmsNav();
+  if (!A) return;
+  // 쓰던 폼은 다시 그려도 지우지 않는다(다른 사람의 갱신이 실시간으로 들어와도)
+  const keep = {};
+  document.querySelectorAll('.arms-view form[data-arms]').forEach((f) => { keep[f.dataset.key || f.dataset.arms] = Object.fromEntries([...f.elements].filter((e) => e.name).map((e) => [e.name, e.type === 'checkbox' ? e.checked : e.value])); });
+  const focusName = document.activeElement && document.activeElement.closest && document.activeElement.closest('.arms-view form') ? [document.activeElement.closest('form').dataset.key || document.activeElement.closest('form').dataset.arms, document.activeElement.name] : null;
+  $('armsStatus').innerHTML = armsStatusHtml();
+  $('armsLoan').innerHTML = armsLoanHtml();
+  $('armsAmmo').innerHTML = armsAmmoHtml();
+  $('armsInspect').innerHTML = armsInspectHtml();
+  $('armsTraining').innerHTML = armsTrainingHtml();
+  $('armsAdmin').innerHTML = armsAdminHtml();
+  document.querySelectorAll('.arms-view form[data-arms]').forEach((f) => {
+    const v = keep[f.dataset.key || f.dataset.arms]; if (!v || (f.dataset.key || f.dataset.arms) === armsClear) return;
+    for (const e of f.elements) if (e.name && e.name in v && !(f.dataset.arms === 'save' && armsEdit && armsEdit.col === f.dataset.col)) { if (e.type === 'checkbox') e.checked = v[e.name]; else e.value = v[e.name]; }
+  });
+  armsClear = '';
+  if (focusName) document.querySelector(`.arms-view form[data-key="${CSS.escape(focusName[0])}"] [name="${CSS.escape(focusName[1] || '')}"], .arms-view form[data-arms="${CSS.escape(focusName[0])}"] [name="${CSS.escape(focusName[1] || '')}"]`)?.focus();
+}
+
+/* 등록 정보 — 무기는 현황, 탄약은 탄약 수불, 무기고·부서·인원은 시스템 관리 안에서 등록·수정한다 */
+function armsRegHtml(col) {
+  const def = ARMS_FIELDS[col], editing = armsEdit && armsEdit.col === col, cur = editing ? armsEdit.rec : {};
+  const input = ([k, l, t]) => {
+    const v = cur[k] ?? '';
+    if (t === 'armory') return fld(l, armorySel(k, v, A.armories.length ? '' : '(시스템 관리에서 무기고를 먼저 등록하세요)'));
+    if (t === 'dept') return fld(l, deptSel(k, v));
+    if (t === 'check') return `<label class="af chk"><input type="checkbox" name="${k}"${v ? ' checked' : ''}><span>${esc(l)}</span></label>`;
+    const list = t.startsWith('list:') ? ` list="${t.slice(5)}"` : '';
+    return fld(l, `<input name="${k}" value="${esc(v)}"${t === 'date' ? ' type="date"' : t === 'num' ? ' type="number" min="0"' : ''}${list} autocomplete="off">`);
+  };
+  const list = A[col];
+  const cell = (x, [k, , t]) => t === 'armory' ? aName('armories', x[k]) : t === 'dept' ? aName('depts', x[k]) : t === 'check' ? (x[k] ? '✓' : '') : esc(x[k] || '');
+  const cols = def.f.filter((f) => f[3]);
+  const extraHead = col === 'weapons' ? ['상태'] : col === 'ammo' ? ['재고'] : col === 'people' ? ['권한'] : [];
+  const rows = list.map((x) => [...cols.map((f) => cell(x, f)),
+    ...(col === 'weapons' ? [`<span class="wst ${x.status}">${W_ST[x.status]}</span>`] : col === 'ammo' ? [String(A.summary.stock[x.id] ?? 0)]
+      : col === 'people' ? [`<select data-arms-role="${esc(x.id)}"${A.myRole === 'admin' ? '' : ' disabled'}>${Object.entries(ROLE_KO).map(([k, l]) => opt(k, l, k === x.role)).join('')}</select>`] : []),
+    `<span class="arow">${canDo('officer') ? `<button class="abtn" data-arms-btn="edit" data-col="${col}" data-id="${esc(x.id)}">수정</button>` : ''}${col === 'weapons' && x.status === 'stored' && canDo('officer') ? `<button class="abtn" data-arms-btn="dispose" data-id="${esc(x.id)}">불용</button>` : ''}${canDo('admin') ? `<button class="abtn del" data-arms-btn="remove" data-col="${col}" data-id="${esc(x.id)}">삭제</button>` : ''}</span>`]);
+  return `<div class="sec-head" id="reg-${col}"><h2>${def.label} 등록</h2><span class="cnt">${list.length}건</span></div>${roleNote('officer')}
+    <form class="card arms-form" data-arms="save" data-col="${col}" data-key="save-${col}">
+      <div class="af-title">${editing ? `${def.label} 수정` : `새 ${def.label}`}</div>
+      ${def.f.map(input).join('')}
+      <div class="af-acts">${editing ? `<button type="button" class="abtn" data-arms-btn="cancelEdit" data-col="${col}">취소</button>` : ''}<button type="submit" class="abtn pri"${canDo('officer') ? '' : ' disabled'}>${editing ? '저장' : '등록'}</button></div>
+    </form>
+    ${aTable([...cols.map((f) => f[1]), ...extraHead, ''], rows, `등록된 ${def.label}이(가) 없습니다`)}`;
+}
+
+/* 2. 현황 */
+function armsStatusHtml() {
+  const S = A.summary, wc = S.weaponCount, owned = A.weapons.length - wc.disposed;
+  const tile = (n, l, cls) => `<div class="stat card ${cls || ''}"><div class="n">${n}</div><div class="l">${esc(l)}</div></div>`;
+  const byArmory = A.armories.map((r) => { const ws = A.weapons.filter((w) => w.armoryId === r.id && w.status !== 'disposed');
+    return [esc(r.name), esc(r.kind || ''), String(ws.length), String(ws.filter((w) => w.status === 'stored').length), String(ws.filter((w) => w.status === 'loaned').length), String(ws.filter((w) => w.status === 'repair').length)]; });
+  const byDept = A.depts.map((d) => { const ws = A.weapons.filter((w) => w.deptId === d.id && w.status !== 'disposed');
+    return [esc(d.name), String(ws.length), String(ws.filter((w) => w.status === 'loaned').length)]; });
+  const lv = { risk: '위험', warn: '확인', info: '참고' };
+  return `${head('무기·탄약 현황', esc(fmtWhen(new Date().toISOString())) + ' 기준')}
+    <div class="stat-grid">${tile(owned, '보유 무기')}${tile(wc.stored, '보관')}${tile(wc.loaned, '대여 중')}${tile(wc.repair, '수리 중')}${tile(wc.disposed, '불용')}${tile(S.alerts.filter((a) => a.level === 'risk').length, '위험 경보', 'risk')}</div>
+    <div class="sec-head"><h2>경보</h2><span class="cnt">${S.alerts.length}</span></div>
+    ${S.alerts.length ? `<div class="card arms-alerts">${S.alerts.map((a) => `<div class="al ${a.level}"><b>${lv[a.level]}</b>${esc(a.text)}</div>`).join('')}</div>` : '<div class="empty arms-empty">경보가 없습니다</div>'}
+    <div class="sec-head"><h2>탄약 재고</h2></div>
+    ${aTable(['탄약', '유효기간', '재고', '최소', '대여 지급 중'], A.ammo.map((a) => [esc(ammoLabel(a)), esc(a.expires || ''), `<b>${S.stock[a.id]}</b> ${esc(a.unit || '발')}`, esc(a.min || ''),
+      String(A.loans.filter((l) => l.status === 'open' && l.ammoId === a.id).reduce((n, l) => n + l.ammoQty, 0))]), '등록된 탄약이 없습니다')}
+    <div class="sec-head"><h2>대여 중</h2><span class="cnt">${S.openLoans}</span></div>
+    ${aTable(['무기', '수령자', '목적', '대여 시각', '반납 예정', '탄약'], A.loans.filter((l) => l.status === 'open').map((l) => [wLabel(l.weaponId), esc(l.person), esc(l.purpose || ''), dt(l.outAt),
+      l.dueAt && l.dueAt < new Date().toISOString() ? `<span class="wst repair">${dt(l.dueAt)} 지남</span>` : dt(l.dueAt), l.ammoQty ? `${aLabel(l.ammoId)} ${l.ammoQty}` : '']), '대여 중인 무기가 없습니다')}
+    <div class="sec-head"><h2>무기고별</h2></div>
+    ${aTable(['무기고', '구분', '보유', '보관', '대여 중', '수리 중'], byArmory, '등록된 무기고가 없습니다')}
+    <div class="sec-head"><h2>부서별</h2></div>
+    ${aTable(['부서', '배정 무기', '대여 중'], byDept, '등록된 부서가 없습니다')}
+    ${armsRegHtml('weapons')}`;
+}
+
+/* 3. 대여·반납 */
+function armsLoanHtml() {
+  const stored = A.weapons.filter((w) => w.status === 'stored');
+  const carriers = A.people.filter((p) => p.carrier);
+  const open = A.loans.filter((l) => l.status === 'open');
+  const recent = A.loans.filter((l) => l.status === 'returned').sort((a, b) => b.returnedAt.localeCompare(a.returnedAt)).slice(0, 30);
+  return `${head('대여·반납', `대여 중 ${open.length}건`)}${roleNote('duty')}
+    <form class="card arms-form" data-arms="issue">
+      <div class="af-title">무기 대여(불출)</div>
+      ${fld('무기', `<select name="weaponId">${stored.length ? stored.map((w) => opt(w.id, `${w.type} ${w.serial} · ${((A.armories.find((r) => r.id === w.armoryId)) || {}).name || ''}`)).join('') : opt('', '보관 중인 무기가 없습니다')}</select>`)}
+      ${fld('수령자', `<input name="person" list="dlCarrier" autocomplete="off" placeholder="휴대 허가자">`)}
+      ${fld('목적', `<input name="purpose" autocomplete="off" placeholder="예: 112 출동, 야간 순찰">`)}
+      ${fld('반납 예정', '<input name="dueAt" type="datetime-local">')}
+      ${fld('지급 탄약', ammoSel('ammoId', '(지급 안 함)'))}
+      ${fld('탄약 수량', '<input name="ammoQty" type="number" min="0" placeholder="0">')}
+      ${fld('입회자', '<input name="witness" autocomplete="off">')}
+      <div class="af-acts"><button type="submit" class="abtn pri"${canDo('duty') && stored.length ? '' : ' disabled'}>대여</button></div>
+      <datalist id="dlCarrier">${carriers.map((p) => `<option value="${esc(p.name)}">${esc(p.rank || '')}</option>`).join('')}</datalist>
+    </form>
+    <div class="sec-head"><h2>반납 대기</h2><span class="cnt">${open.length}</span></div>
+    ${open.length ? open.map((l) => `<form class="card arms-form loan" data-arms="return" data-key="return-${esc(l.id)}">
+      <input type="hidden" name="loanId" value="${esc(l.id)}">
+      <div class="af-title">${wLabel(l.weaponId)} — ${esc(l.person)} <small>${dt(l.outAt)} 대여${l.dueAt ? ` · ${dt(l.dueAt)}까지` : ''}${l.ammoQty ? ` · ${aLabel(l.ammoId)} ${l.ammoQty}발 지급` : ''}</small></div>
+      ${l.ammoQty ? fld('회수 탄약', `<input name="ammoReturned" type="number" min="0" max="${l.ammoQty}" value="${l.ammoQty}">`) + fld('사용 사유(모자랄 때)', '<input name="usedNote" autocomplete="off">') : ''}
+      ${fld('상태', '<input name="condition" autocomplete="off" placeholder="이상 없음">')}
+      <label class="af chk"><input type="checkbox" name="repair"><span>수리 필요</span></label>
+      <div class="af-acts"><button type="submit" class="abtn pri"${canDo('duty') ? '' : ' disabled'}>반납</button></div></form>`).join('') : '<div class="empty arms-empty">반납을 기다리는 무기가 없습니다</div>'}
+    <div class="sec-head"><h2>최근 반납</h2></div>
+    ${aTable(['무기', '수령자', '대여', '반납', '탄약 지급/회수', '비고'], recent.map((l) => [wLabel(l.weaponId), esc(l.person), dt(l.outAt), dt(l.returnedAt),
+      l.ammoQty ? `${l.ammoQty} / ${l.ammoReturned}` : '', esc([l.usedNote && `사용: ${l.usedNote}`, l.condition].filter(Boolean).join(' · '))]), '반납 기록이 없습니다')}`;
+}
+
+/* 4. 탄약 수불 */
+function armsAmmoHtml() {
+  const S = A.summary;
+  const txs = A.tx.filter((t) => !armsLedgerAmmo || t.ammoId === armsLedgerAmmo).sort((a, b) => a.at.localeCompare(b.at));
+  const bal = {}; const rows = txs.map((t) => { bal[t.ammoId] = (bal[t.ammoId] || 0) + t.qty;
+    return [dt(t.at), aLabel(t.ammoId), esc(TX_KO[t.kind] || t.kind), t.qty > 0 ? `+${t.qty}` : String(t.qty), String(bal[t.ammoId]), t.shells == null ? '' : String(t.shells), esc(t.note || ''), esc(displayName(t.by))]; }).reverse();
+  return `${head('탄약 수불', `${A.tx.length}건`)}
+    <form class="card arms-form" data-arms="ammoTx">
+      <div class="af-title">수불 기록</div>
+      ${fld('탄약', ammoSel('ammoId'))}
+      ${fld('구분', `<select name="kind">${['in', 'use', 'dispose', 'adjust'].map((k) => opt(k, TX_KO[k])).join('')}</select>`)}
+      ${fld('수량', '<input name="qty" type="number" placeholder="조정은 음수 가능">')}
+      ${fld('탄피 회수', '<input name="shells" type="number" min="0">')}
+      ${fld('사유·근거', '<input name="note" autocomplete="off" placeholder="보급 문서번호, 사용 보고 등">', true)}
+      <div class="af-acts"><button type="submit" class="abtn pri"${canDo('officer') && A.ammo.length ? '' : ' disabled'}>기록</button></div>
+    </form>
+    <div class="sec-head"><h2>수불부</h2><span class="sp"></span><select class="arms-filter" data-arms-filter="ledger">${opt('', '전체 탄약')}${A.ammo.map((a) => opt(a.id, ammoLabel(a), a.id === armsLedgerAmmo)).join('')}</select></div>
+    ${aTable(['일시', '탄약', '구분', '수량', '잔량', '탄피', '사유', '처리자'], rows, '수불 기록이 없습니다')}
+    ${armsRegHtml('ammo')}`;
+}
+
+/* 5. 점검·정비 */
+function armsInspectHtml() {
+  const repair = A.weapons.filter((w) => w.status === 'repair');
+  const list = A.inspections.slice().sort((a, b) => b.at.localeCompare(a.at)).slice(0, 100);
+  return `${head('점검·정비')}${roleNote('duty')}
+    <form class="card arms-form" data-arms="inspect">
+      <div class="af-title">점검 기록</div>
+      ${fld('구분', `<select name="kind">${['daily', 'weekly', 'regular', 'special'].map((k) => opt(k, INSP_KO[k])).join('')}</select>`)}
+      ${fld('무기고', armorySel('armoryId', '', A.armories.length ? '' : '(시스템 관리에서 무기고를 먼저 등록하세요)'))}
+      ${fld('개별 무기(선택)', `<select name="weaponId">${opt('', '(무기고 전체)')}${A.weapons.filter((w) => w.status !== 'disposed').map((w) => opt(w.id, `${w.type} ${w.serial}`)).join('')}</select>`)}
+      ${fld('결과', `<select name="result">${opt('ok', '이상 없음')}${opt('issue', '이상 있음')}</select>`)}
+      <div class="af wide checks"><span>점검 항목</span><div>${INSP_CHECKS.map((c) => `<label><input type="checkbox" name="check:${esc(c)}"> ${esc(c)}</label>`).join('')}</div></div>
+      ${fld('내용', '<input name="note" autocomplete="off" placeholder="이상 내용, 조치 사항">', true)}
+      <label class="af chk"><input type="checkbox" name="repair"><span>이 무기 수리 의뢰</span></label>
+      <div class="af-acts"><button type="submit" class="abtn pri"${canDo('duty') && A.armories.length ? '' : ' disabled'}>기록</button></div>
+    </form>
+    <div class="sec-head"><h2>수리 중</h2><span class="cnt">${repair.length}</span></div>
+    ${aTable(['무기', '무기고', '의뢰 내용', ''], repair.map((w) => { const last = A.inspections.filter((i) => i.weaponId === w.id && i.repair).pop() || {};
+      return [esc(`${w.type} ${w.serial}`), aName('armories', w.armoryId), esc(last.note || ''), canDo('officer') ? `<button class="abtn" data-arms-btn="repairDone" data-id="${esc(w.id)}">수리 완료</button>` : '']; }), '수리 중인 무기가 없습니다')}
+    <div class="sec-head"><h2>점검 이력</h2></div>
+    ${aTable(['일시', '구분', '무기고', '무기', '결과', '항목', '내용', '점검자'], list.map((i) => [dt(i.at), esc(INSP_KO[i.kind] || i.kind), aName('armories', i.armoryId), i.weaponId ? wLabel(i.weaponId) : '',
+      i.result === 'ok' ? '이상 없음' : '<span class="wst repair">이상 있음</span>', esc((i.checks || []).join(', ')), esc(i.note || ''), esc(displayName(i.by))]), '점검 기록이 없습니다')}`;
+}
+
+/* 8. 사격·훈련 */
+function armsTrainingHtml() {
+  const list = A.trainings.slice().sort((a, b) => b.date.localeCompare(a.date));
+  return `${head('사격·훈련', `${list.length}건`)}${roleNote('officer')}
+    <form class="card arms-form" data-arms="training">
+      <div class="af-title">훈련 기록 — 사용 탄약은 수불부에 자동 반영됩니다</div>
+      ${fld('날짜', `<input name="date" type="date" value="${today()}">`)}
+      ${fld('훈련명', '<input name="title" autocomplete="off" placeholder="예: 상반기 정기 사격">')}
+      ${fld('장소', '<input name="place" autocomplete="off">')}
+      ${fld('사용 탄약', ammoSel('ammoId', '(탄약 사용 안 함)'))}
+      ${fld('탄피 회수', '<input name="shells" type="number" min="0">')}
+      ${fld('참가자 — 한 줄에 한 명: 이름, 점수, 사용 탄약 수', '<textarea name="participants" rows="4" placeholder="홍길동, 92, 30&#10;김철수, 85, 30"></textarea>', true)}
+      <div class="af-acts"><button type="submit" class="abtn pri"${canDo('officer') ? '' : ' disabled'}>기록</button></div>
+    </form>
+    ${list.length ? list.map((t) => `<details class="card arms-train"><summary><b>${esc(t.date)} ${esc(t.title)}</b><span>${esc(t.place || '')} · ${t.participants.length}명 · 탄약 ${t.total}${t.ammoId ? ` (${aLabel(t.ammoId)})` : ''}${t.shells != null ? ` · 탄피 ${t.shells}` : ''}</span></summary>
+      ${aTable(['이름', '점수', '사용 탄약'], t.participants.map((x) => [esc(x.person), esc(x.score), String(x.shots)]))}</details>`).join('') : '<div class="empty arms-empty">훈련 기록이 없습니다</div>'}`;
+}
+
+/* 12. 시스템 관리 */
+function armsAdminHtml() {
+  const isAdmin = A.myRole === 'admin';
+  return `${head('시스템 관리', `내 권한: ${ROLE_KO[A.myRole]}`)}
+    <div class="card arms-note-card">권한은 <b>관리자</b>(전체·삭제·권한 지정) › <b>담당자</b>(무기·탄약·무기고·부서·인원 등록, 탄약 수불, 훈련, 수리 완료) › <b>당직자</b>(대여·반납·점검) › <b>일반</b>(조회) 순입니다.
+      로그인 ID(이메일)를 인원에 적어 두면 앞단 신원 헤더(ANA_IDENTITY_HEADER)로 들어온 사용자가 그 권한으로 동작합니다. 단일 사용자 모드이거나 관리자가 아직 없으면 모두 관리자로 동작합니다.</div>
+    ${armsRegHtml('armories')}${armsRegHtml('depts')}${armsRegHtml('people')}
+    <div class="sec-head"><h2>백업</h2></div>
+    <div class="card arms-note-card">무기·탄약 대장 전체를 JSON 파일로 받습니다(관리자). 서버의 <code>data/arms.json</code>이 원본입니다. ${isAdmin ? '<a class="abtn pri" href="/api/arms/export">백업 받기</a>' : ''}</div>
+    <div class="sec-head"><h2>처리 이력</h2><span class="cnt">최근 ${A.history.length}건</span></div>
+    ${aTable(['일시', '처리자', '구분', '내용'], A.history.map((x) => [dt(x.at), esc(displayName(x.by)), esc(x.action), esc(x.text)]), '이력이 없습니다')}`;
+}
+
+/* 이벤트 — 폼 제출 · 버튼 · 필터 */
+async function armsPost(body, okMsg, clearKey) {
+  let r, j; try { r = await post('/api/arms', body); j = await r.json().catch(() => ({})); } catch { showErr('서버에 연결할 수 없습니다'); return false; }
+  if (!r.ok) { showErr(j.error || '처리하지 못했습니다'); return false; }
+  if (okMsg) toast(okMsg);
+  if (body.action === 'save') armsEdit = null;
+  armsClear = clearKey || '';
+  await refreshArms(); return true;
+}
+document.addEventListener('submit', async (e) => {
+  const f = e.target.closest('.arms-view form[data-arms]'); if (!f) return;
+  e.preventDefault();
+  const v = {}; for (const el of f.elements) if (el.name) v[el.name] = el.type === 'checkbox' ? el.checked : el.value.trim();
+  const act = f.dataset.arms;
+  let body, msg;
+  if (act === 'save') { const col = f.dataset.col, ed = armsEdit && armsEdit.col === col ? armsEdit.rec : null; body = { action: 'save', col, rec: { ...v, id: ed ? ed.id : undefined } }; msg = ed ? '저장했습니다' : '등록했습니다'; }
+  else if (act === 'inspect') { body = { action: 'inspect', ...v, checks: Object.keys(v).filter((k) => k.startsWith('check:') && v[k]).map((k) => k.slice(6)) }; msg = '점검을 기록했습니다'; }
+  else if (act === 'training') {
+    const participants = v.participants.split('\n').map((l) => l.split(',').map((x) => x.trim())).filter((x) => x[0]).map(([person, score, shots]) => ({ person, score: score || '', shots: Number(shots) || 0 }));
+    body = { action: 'training', ...v, participants }; msg = '훈련을 기록했습니다';
+  } else { body = { action: act, ...v }; msg = { issue: '대여했습니다', return: '반납 처리했습니다', ammoTx: '수불을 기록했습니다' }[act]; }
+  const btn = f.querySelector('[type="submit"]'); if (btn) btn.disabled = true;
+  await armsPost(body, msg, f.dataset.key || act);
+  if (btn && btn.isConnected) btn.disabled = false;
+});
+document.addEventListener('click', async (e) => {
+  const sub = e.target.closest('[data-arms-sub]');
+  if (sub) { selectArmsSub(sub.dataset.armsSub); return; }
+  const b = e.target.closest('[data-arms-btn]'); if (!b || !A) return;
+  const id = b.dataset.id, k = b.dataset.armsBtn, col = b.dataset.col;
+  if (k === 'edit') { const rec = A[col].find((x) => x.id === id); armsEdit = rec ? { col, rec } : null; renderArms(); $(`reg-${col}`)?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+  else if (k === 'cancelEdit') { armsEdit = null; armsClear = `save-${col}`; renderArms(); }
+  else if (k === 'remove') { const x = A[col].find((y) => y.id === id) || {}; if (await confirmDelete(`${ARMS_FIELDS[col].label} "${x.name || `${x.type || ''} ${x.serial || x.lot || ''}`.trim()}"`)) armsPost({ action: 'remove', col, id }, '삭제했습니다'); }
+  else if (k === 'dispose') { const w = A.weapons.find((y) => y.id === id); if (w && await confirmAsk({ title: '불용 처리할까요?', body: `${w.type} ${w.serial}을(를) 불용으로 바꿉니다. 대여할 수 없게 됩니다.`, yes: '불용 처리' })) armsPost({ action: 'save', col: 'weapons', rec: { ...w, status: 'disposed' } }, '불용 처리했습니다'); }
+  else if (k === 'repairDone') armsPost({ action: 'repairDone', weaponId: id }, '수리 완료로 바꿨습니다');
+  else if (k === 'accessOut') armsPost({ action: 'accessOut', id }, '퇴실을 기록했습니다');
+});
+document.addEventListener('change', (e) => {
+  const r = e.target.closest('[data-arms-role]');
+  if (r) { armsPost({ action: 'role', personId: r.dataset.armsRole, role: r.value }, '권한을 바꿨습니다'); return; }
+  const f = e.target.closest('[data-arms-filter]'); if (!f) return;
+  if (f.dataset.armsFilter === 'ledger') armsLedgerAmmo = f.value;
+  renderArms();
+});
+
 initCal(); connect();
 loadWorkspaces().finally(() => { refreshData(); });
 refreshEvolve();
 refreshRequests();
 refreshUpdates();   // System 배지에 대기 중인 업데이트 수
+renderArmsNav();    // 무기·탄약 세부 카테고리 막대(데이터가 오기 전에도 보이게)
+refreshArms();      // 현황 탭 배지 = 위험 경보 수
 setInterval(async () => {
   if (document.hidden) return;
   const gen = streamGen;
@@ -3838,7 +4205,7 @@ function pageLocation() {
   const tab = document.querySelector('.topnav .tab.on'), view = document.querySelector('.view.on');
   const ws = (workspaces.find((w) => w.id === currentWs) || {}).name || currentWs || 'default';
   const parts = [`workspace "${ws}"`, `${(tab && tab.textContent.replace(/\d+$/, '').trim()) || '?'} tab`];
-  if (view && view.id === 'scheduleView') parts.push(`calendar ${MONTHS[calM]} ${calY}, selected day ${selDate}`);
+  if (view && view.id === 'scheduleView') parts.push(`calendar ${monthTitle(calY, calM)}, selected day ${selDate}`);
   if (view && view.id === 'memoView') { const n = notes.find((x) => x.id === memoSel); if (n) parts.push(`open note "${noteTitle(n)}" (${n.id})`); }
   if (view && view.id === 'statsView') parts.push(`stats view "${statSeg}"`);
   if (view) {

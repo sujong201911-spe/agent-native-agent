@@ -21,6 +21,7 @@ const relgraph = require('./graph.js');
 const codexSettings = require('./codex-settings.js');
 const permissionMode = require('./permission-mode.js');
 const { createAgentLog } = require('./agent-log.js');
+const { createArmsApi } = require('./arms-api.js');
 
 function createDashboardApi(core, opts) {
   const { ROOT } = opts;
@@ -157,6 +158,9 @@ function createDashboardApi(core, opts) {
   const saveData = (s, ws) => { relgraph.pruneLinks(s); writeJsonAtomic(dataFileOf(ws || curWs()), s); };
   // 관계 그래프 — state.json에서 파생되는 NodeRel 인덱스(워크스페이스마다 graph.sqlite)
   const graph = relgraph.createGraph({ loadData, dataFileOf });
+  // 무기·탄약(정보화장비계) — 워크스페이스마다 따로인 대장(state.json 옆 arms.json)
+  const armsRoutes = createArmsApi({ fileOf: () => path.join(path.dirname(dataFileOf(curWs())), 'arms.json'),
+    writeJsonAtomic: core.writeJsonAtomic, readJsonStrict: core.readJsonStrict, sendJson: core.sendJson, actor, audit, idHeader: ID_HEADER });
 
   function loadProposals() {
     const s = readJsonStrict(PROPOSALS_FILE, () => ({ proposals: [] }));
@@ -491,6 +495,7 @@ function createDashboardApi(core, opts) {
   async function routes(req, res, url, ctx) {
     const p = url.pathname;
     const { commit, broadcast, csrfOk, jsonBody } = ctx;
+    if (p === '/api/arms' || p.startsWith('/api/arms/')) return armsRoutes(req, res, url, ctx);
 
     // ---- 워크스페이스 목록/추가/선택/이름 변경/삭제/순서 변경 ----
     if (p === '/api/workspaces' && req.method === 'GET') {
