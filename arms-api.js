@@ -103,7 +103,7 @@ function createArmsApi({ fileOf, writeJsonAtomic, readJsonStrict, sendJson, acto
       if (b.col === 'weapons' && !s.armories.some((r) => r.id === rec.armoryId)) return [400, '보관 무기고를 고르세요'];
       const list = s[b.col];
       const cur = b.rec && b.rec.id ? list.find((x) => x.id === b.rec.id) : null;
-      if (b.col === 'weapons' && list.some((w) => w.serial === rec.serial && (!cur || w.id !== cur.id))) return [409, `총번 ${rec.serial}이(가) 이미 있습니다`];
+      if (b.col === 'weapons' && list.some((w) => w.serial === rec.serial && (!cur || w.id !== cur.id))) return [409, `무기번호 ${rec.serial}이(가) 이미 있습니다`];
       if (cur) Object.assign(cur, rec, { updatedAt: now() });
       else list.push({ id: newId(b.col[0]), ...rec, ...(b.col === 'weapons' ? { status: 'stored' } : {}), ...(b.col === 'people' ? { role: 'staff' } : {}), at: now() });
       // 무기 불용 처리는 save로: 보관 중일 때만

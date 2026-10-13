@@ -1146,6 +1146,8 @@ body.sys-mode .ws-combo { display: none; }
 .arms-tbl td:has(> .arow), .arms-tbl th:last-child { text-align: right; }
 .arms-tbl th { font-size: 11.5px; color: var(--text-weak); font-weight: 800; }
 .arms-tbl tr:last-child td { border-bottom: none; }
+.arms-tbl td:has(> .wnos) { white-space: normal; min-width: 220px; }
+.wnos { display: flex; flex-wrap: wrap; gap: 4px; }
 .arms-empty { padding: 18px 0; }
 .wst { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 800; background: var(--surface-2); color: var(--text-sub); }
 .wst.stored { background: var(--success-bg); color: var(--success); }
@@ -1237,7 +1239,7 @@ body.sys-mode .ws-combo { display: none; }
       </div>
     </div>
     <div class="tabstrip">
-      <button class="tab on" data-view="arms" data-group="ws" role="tab" aria-selected="true">무기·탄약<span class="tbadge" id="armsBadge">0</span></button>
+      <button class="tab on" data-view="arms" data-group="ws" role="tab" aria-selected="true">무기·탄약</button>
       <button class="tab" data-view="evolve" data-group="collab" role="tab" aria-selected="false">진화<span class="tbadge" id="evoBadge">0</span></button>
       <button class="tab" data-view="approvals" data-group="collab" role="tab" aria-selected="false">승인<span class="tbadge" id="apprBadge">0</span></button>
       <button class="tab" data-view="requests" data-group="collab" role="tab" aria-selected="false">요청<span class="tbadge" id="reqBadge">0</span></button>
@@ -3592,8 +3594,7 @@ const ARMS_SUBS = [['armsStatus', '현황'], ['armsLoan', '대여·반납'], ['a
 let armsSub = 'armsStatus';
 try { const v = localStorage.getItem('ana-arms-sub'); if (ARMS_SUBS.some(([k]) => k === v)) armsSub = v; } catch {}
 function renderArmsNav() {
-  const risk = A ? A.summary.alerts.filter((x) => x.level === 'risk').length : 0;
-  $('armsNav').innerHTML = ARMS_SUBS.map(([k, l]) => `<button role="tab" data-arms-sub="${k}" aria-selected="${k === armsSub}" class="${k === armsSub ? 'on' : ''}">${l}${k === 'armsStatus' && risk ? `<span class="n">${risk}</span>` : ''}</button>`).join('');
+  $('armsNav').innerHTML = ARMS_SUBS.map(([k, l]) => `<button role="tab" data-arms-sub="${k}" aria-selected="${k === armsSub}" class="${k === armsSub ? 'on' : ''}">${l}</button>`).join('');
   ARMS_SUBS.forEach(([k]) => { $(k).hidden = k !== armsSub; });
 }
 function selectArmsSub(k) {
@@ -3611,7 +3612,7 @@ const INSP_CHECKS = ['수량 일치', '잠금장치', '총기 상태', '탄약 �
 const ROLE_RANK = { admin: 3, officer: 2, duty: 1, staff: 0 };
 // 등록 정보 입력 칸 — [필드, 이름, 종류(text|date|num|armory|dept|check|list:<datalist id>), 표에 보일지]
 const ARMS_FIELDS = {
-  weapons: { label: '무기', f: [['type', '종류', 'list:dlWType', 1], ['model', '모델', 'text', 1], ['serial', '총번', 'text', 1], ['armoryId', '보관 무기고', 'armory', 1], ['deptId', '배정 부서', 'dept', 1], ['acquiredAt', '취득일', 'date', 0], ['note', '비고', 'text', 0]] },
+  weapons: { label: '무기', f: [['type', '종류', 'list:dlWType', 1], ['model', '모델', 'text', 1], ['serial', '무기번호', 'text', 1], ['armoryId', '보관 무기고', 'armory', 1], ['deptId', '배정 부서', 'dept', 1], ['acquiredAt', '취득일', 'date', 0], ['note', '비고', 'text', 0]] },
   ammo: { label: '탄약', f: [['type', '종류', 'list:dlAType', 1], ['caliber', '구경', 'text', 1], ['lot', '로트 번호', 'text', 1], ['expires', '유효기간', 'date', 1], ['unit', '단위', 'text', 0], ['min', '최소 재고', 'num', 1], ['armoryId', '보관 무기고', 'armory', 0], ['note', '비고', 'text', 0]] },
   armories: { label: '무기고', f: [['name', '이름', 'text', 1], ['kind', '구분', 'list:dlArmKind', 1], ['location', '위치', 'text', 1], ['note', '비고', 'text', 0]] },
   depts: { label: '부서', f: [['name', '이름', 'text', 1], ['note', '비고', 'text', 1]] },
@@ -3639,8 +3640,6 @@ const roleNote = (role) => (canDo(role) ? '' : `<div class="arms-note">이 작�
 async function refreshArms() {
   try { A = await getJSON('/api/arms'); } catch { return; }
   if (!A || A.error) return;
-  const risk = A.summary.alerts.filter((x) => x.level === 'risk').length;
-  $('armsBadge').textContent = risk; $('armsBadge').classList.toggle('show', risk > 0); updateSysBadge();
   renderArms();
 }
 function renderArms() {
@@ -3696,23 +3695,30 @@ function armsRegHtml(col) {
 function armsStatusHtml() {
   const S = A.summary, wc = S.weaponCount, owned = A.weapons.length - wc.disposed;
   const tile = (n, l, cls) => `<div class="stat card ${cls || ''}"><div class="n">${n}</div><div class="l">${esc(l)}</div></div>`;
-  const byArmory = A.armories.map((r) => { const ws = A.weapons.filter((w) => w.armoryId === r.id && w.status !== 'disposed');
-    return [esc(r.name), esc(r.kind || ''), String(ws.length), String(ws.filter((w) => w.status === 'stored').length), String(ws.filter((w) => w.status === 'loaned').length), String(ws.filter((w) => w.status === 'repair').length)]; });
+  // 무기 현황 — 종류별 수량과 무기번호(상태 색으로)
+  const wTypes = [...new Set(A.weapons.map((w) => w.type))].sort();
+  const n = (ws, st) => String(ws.filter((w) => w.status === st).length);
+  const byType = wTypes.map((t) => { const ws = A.weapons.filter((w) => w.type === t).sort((a, b) => a.serial.localeCompare(b.serial));
+    return [`<b>${esc(t)}</b>`, `<b>${ws.length - Number(n(ws, 'disposed'))}</b>`, n(ws, 'stored'), n(ws, 'loaned'), n(ws, 'repair'), n(ws, 'disposed'),
+      `<span class="wnos">${ws.map((w) => `<span class="wst ${w.status}" title="${W_ST[w.status]}">${esc(w.serial)}</span>`).join('')}</span>`]; });
+  // 탄약 현황 — 종류(구경)별 합계, 로트별 수량
+  const aKey = (a) => `${a.type}\u0000${a.caliber || ''}`;
+  const aGroups = [...new Set(A.ammo.map(aKey))].sort();
+  const lent = (a) => A.loans.filter((l) => l.status === 'open' && l.ammoId === a.id).reduce((x, l) => x + l.ammoQty, 0);
+  const byAmmo = aGroups.map((k) => { const as = A.ammo.filter((a) => aKey(a) === k), unit = esc(as[0].unit || '발');
+    return [`<b>${esc(as[0].type)}</b>`, esc(as[0].caliber || ''), `<b>${as.reduce((x, a) => x + S.stock[a.id], 0)}</b> ${unit}`, `${as.reduce((x, a) => x + lent(a), 0)} ${unit}`,
+      `<span class="wnos">${as.map((a) => `<span class="wst${a.min && S.stock[a.id] < Number(a.min) ? ' repair' : ''}" title="${esc(a.expires ? '유효기간 ' + a.expires : '')}">${esc(a.lot || '로트 없음')} · ${S.stock[a.id]}</span>`).join('')}</span>`]; });
   const byDept = A.depts.map((d) => { const ws = A.weapons.filter((w) => w.deptId === d.id && w.status !== 'disposed');
     return [esc(d.name), String(ws.length), String(ws.filter((w) => w.status === 'loaned').length)]; });
-  const lv = { risk: '위험', warn: '확인', info: '참고' };
   return `${head('무기·탄약 현황', esc(fmtWhen(new Date().toISOString())) + ' 기준')}
-    <div class="stat-grid">${tile(owned, '보유 무기')}${tile(wc.stored, '보관')}${tile(wc.loaned, '대여 중')}${tile(wc.repair, '수리 중')}${tile(wc.disposed, '불용')}${tile(S.alerts.filter((a) => a.level === 'risk').length, '위험 경보', 'risk')}</div>
-    <div class="sec-head"><h2>경보</h2><span class="cnt">${S.alerts.length}</span></div>
-    ${S.alerts.length ? `<div class="card arms-alerts">${S.alerts.map((a) => `<div class="al ${a.level}"><b>${lv[a.level]}</b>${esc(a.text)}</div>`).join('')}</div>` : '<div class="empty arms-empty">경보가 없습니다</div>'}
-    <div class="sec-head"><h2>탄약 재고</h2></div>
-    ${aTable(['탄약', '유효기간', '재고', '최소', '대여 지급 중'], A.ammo.map((a) => [esc(ammoLabel(a)), esc(a.expires || ''), `<b>${S.stock[a.id]}</b> ${esc(a.unit || '발')}`, esc(a.min || ''),
-      String(A.loans.filter((l) => l.status === 'open' && l.ammoId === a.id).reduce((n, l) => n + l.ammoQty, 0))]), '등록된 탄약이 없습니다')}
+    <div class="stat-grid">${tile(owned, '보유 무기')}${tile(wc.stored, '보관')}${tile(wc.loaned, '대여 중')}${tile(wc.repair, '수리 중')}${tile(wc.disposed, '불용')}</div>
+    <div class="sec-head"><h2>무기 현황</h2><span class="cnt">${wTypes.length}종 · ${owned}정</span></div>
+    ${aTable(['종류', '보유', '보관', '대여 중', '수리 중', '불용', '무기번호'], byType, '등록된 무기가 없습니다 — 아래 무기 등록에서 추가하세요')}
+    <div class="sec-head"><h2>탄약 현황</h2><span class="cnt">${aGroups.length}종</span></div>
+    ${aTable(['종류', '구경', '재고', '대여 지급 중', '로트별 재고'], byAmmo, '등록된 탄약이 없습니다 — 탄약 수불에서 등록하세요')}
     <div class="sec-head"><h2>대여 중</h2><span class="cnt">${S.openLoans}</span></div>
     ${aTable(['무기', '수령자', '목적', '대여 시각', '반납 예정', '탄약'], A.loans.filter((l) => l.status === 'open').map((l) => [wLabel(l.weaponId), esc(l.person), esc(l.purpose || ''), dt(l.outAt),
       l.dueAt && l.dueAt < new Date().toISOString() ? `<span class="wst repair">${dt(l.dueAt)} 지남</span>` : dt(l.dueAt), l.ammoQty ? `${aLabel(l.ammoId)} ${l.ammoQty}` : '']), '대여 중인 무기가 없습니다')}
-    <div class="sec-head"><h2>무기고별</h2></div>
-    ${aTable(['무기고', '구분', '보유', '보관', '대여 중', '수리 중'], byArmory, '등록된 무기고가 없습니다')}
     <div class="sec-head"><h2>부서별</h2></div>
     ${aTable(['부서', '배정 무기', '대여 중'], byDept, '등록된 부서가 없습니다')}
     ${armsRegHtml('weapons')}`;
@@ -3877,7 +3883,7 @@ refreshEvolve();
 refreshRequests();
 refreshUpdates();   // System 배지에 대기 중인 업데이트 수
 renderArmsNav();    // 무기·탄약 세부 카테고리 막대(데이터가 오기 전에도 보이게)
-refreshArms();      // 현황 탭 배지 = 위험 경보 수
+refreshArms();
 setInterval(async () => {
   if (document.hidden) return;
   const gen = streamGen;
